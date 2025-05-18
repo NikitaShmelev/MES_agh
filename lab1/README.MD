@@ -3,7 +3,13 @@
 pip install -r requirements.txt
 ```
 
-# Run
+# Run with visualiosation
 ```bash
 streamlit run app.py  
+```
+
+
+# Run only in console
+```bash
+python main.py 
 ```
