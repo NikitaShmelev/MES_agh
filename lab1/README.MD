@@ -3,7 +3,7 @@
 pip install -r requirements.txt
 ```
 
-# Run with visualiosation
+# Run with visualisation
 ```bash
 streamlit run app.py  
 ```
