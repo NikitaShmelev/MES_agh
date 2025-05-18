@@ -11,7 +11,7 @@ LG = 5 # m - długość
 q = -150 # W/m^2
 t_sr = 400 # K
 
-ME = 5 # liczba elemetów
+ME = 2 # liczba elemetów
 MN = ME + 1 # licza węzłów
 
 delta_L = LG / ME
@@ -69,3 +69,11 @@ Element.print_equation(
         final_H,
         final_P
     )
+
+
+res = Element.solve_equation(
+    final_H,
+    final_P,
+)
+
+print(res)

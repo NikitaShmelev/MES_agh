@@ -80,3 +80,13 @@ class Element:
         # Zip and print
         for H_line, P_line in zip(H_lines, P_lines):
             print(f"{H_line}   {P_line}")
+
+    @staticmethod
+    def solve_equation(H: np.ndarray, P: np.ndarray) -> np.ndarray:
+        # Ensure that H is invertible (non-singular)
+        if np.linalg.det(H) == 0:
+            raise ValueError("Matrix H is singular and cannot be inverted.")
+
+        # Solve for t
+        t = -np.linalg.inv(H) @ P
+        return t
