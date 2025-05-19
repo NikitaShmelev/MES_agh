@@ -51,11 +51,11 @@ if st.sidebar.button("🔢 Solve"):
     with col1:
         st.markdown("**\(H\) matrix:**")
         st.latex(r"H = " + to_latex(H_final))
-        st.dataframe(H_final, width=300)
+        # st.dataframe(H_final, width=300)
     with col2:
         st.markdown("**\(P\) vector:**")
         st.latex(r"P = " + to_latex(P_final))
-        st.dataframe(P_final, width=200)
+        # st.dataframe(P_final, width=200)
 
     st.markdown("**Equation to solve:**")
     st.latex(r"H\,t + P = 0")
@@ -64,4 +64,4 @@ if st.sidebar.button("🔢 Solve"):
     t = Element.solve_equation(H_final, P_final)
     st.subheader("Solution vector \(t\)")
     st.latex(r"t = " + to_latex(t.reshape(-1,1)))
-    st.dataframe(t, width=200)
+    # st.dataframe(t, width=200)
