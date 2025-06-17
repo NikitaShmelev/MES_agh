@@ -1,0 +1,38 @@
+steps:
+  # 1. Build obrazu
+  - name: "gcr.io/cloud-builders/docker"
+    args:
+      [
+        "build",
+        "--platform", "linux/amd64",
+        "-t", "gcr.io/$PROJECT_ID/streamlit-app",
+        "."
+      ]
+
+  # 1b. Push do GCR (żeby Cloud Run znalazł obraz)
+  - name: "gcr.io/cloud-builders/docker"
+    args:
+      [
+        "push",
+        "gcr.io/$PROJECT_ID/streamlit-app"
+      ]
+
+  # 2. Deploy do Cloud Run
+  - name: "gcr.io/cloud-builders/gcloud"
+    args:
+      [
+        "run", "deploy", "streamlit-app",
+        "--image", "gcr.io/$PROJECT_ID/streamlit-app",
+        "--platform", "managed",
+        "--region", "europe-central2",
+        "--allow-unauthenticated",
+        "--max-instances", "1",
+        "--min-instances", "0",
+        "--memory", "256Mi",
+        "--cpu", "1",
+        "--port", "8080"
+      ]
+
+# Dzięki temu Cloud Build wyłapuje obraz i go pushuje
+images:
+  - "gcr.io/$PROJECT_ID/streamlit-app"
