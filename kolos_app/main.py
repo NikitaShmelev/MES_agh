@@ -2,6 +2,7 @@ import streamlit as st
 import json
 import random
 import re
+import time
 
 # Konfiguracja strony
 st.set_page_config(
@@ -12,8 +13,11 @@ st.set_page_config(
 
 # --- FUNKCJA DO ŁADOWANIA LOKALNEGO CSS ---
 def local_css(file_name):
-    with open(file_name) as f:
-        st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
+    try:
+        with open(file_name) as f:
+            st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
+    except FileNotFoundError:
+        st.warning(f"Plik {file_name} nie został znaleziony. Aplikacja będzie działać ze standardowymi stylami.")
 
 # Wywołanie funkcji, aby załadować style z pliku style.css
 local_css("style.css")
@@ -64,6 +68,7 @@ def initialize_quiz():
     st.session_state.answer_submitted = False
     st.session_state.quiz_started = True
     st.session_state.checkbox_states = {}
+    st.session_state.timer_stopped = False # Stan timera
 
 def reset_quiz():
     """Całkowicie resetuje quiz, usuwając stan sesji."""
@@ -72,10 +77,11 @@ def reset_quiz():
     st.rerun()
 
 def go_to_next_question():
-    """Przechodzi do następnego pytania."""
+    """Przechodzi do następnego pytania i resetuje stany."""
     st.session_state.current_q_index_ptr += 1
     st.session_state.answer_submitted = False
     st.session_state.checkbox_states = {}
+    st.session_state.timer_stopped = False # Resetuj stan timera
 
 
 # --- Główna logika aplikacji ---
@@ -110,9 +116,11 @@ elif st.session_state.current_q_index_ptr < st.session_state.total_questions:
     st.markdown(question_text)
     st.write("---")
 
+    # Jeśli odpowiedź została udzielona, pokaż feedback i timer
     if st.session_state.answer_submitted:
         last_result = st.session_state.quiz_history[-1]
         
+        # Formatowanie poprawnej odpowiedzi
         if isinstance(last_result['correct_answer'], list):
             correct_answer_display = "\n" + "\n".join([f"- {ans}" for ans in last_result['correct_answer']])
             correct_answer_heading = "**Poprawne odpowiedzi:**"
@@ -120,16 +128,50 @@ elif st.session_state.current_q_index_ptr < st.session_state.total_questions:
             correct_answer_display = f"**{last_result['correct_answer']}**"
             correct_answer_heading = "**Poprawna odpowiedź to:**"
         
-        feedback_message = ""
+        # Wyświetlenie komunikatu zwrotnego
         if last_result['is_correct']:
             feedback_message = f"✅ Dobrze! {correct_answer_heading}{correct_answer_display}"
+            st.success(feedback_message)
+            countdown_duration = 2
         else:
             user_answer_str = ", ".join(last_result['user_answer']) if isinstance(last_result['user_answer'], list) else last_result['user_answer']
             feedback_message = f"❌ Niestety, źle. Twoja odpowiedź: **{user_answer_str}**. {correct_answer_heading}{correct_answer_display}"
+            st.error(feedback_message) # Używamy st.error dla błędnej odpowiedzi dla lepszego rozróżnienia
+            countdown_duration = 5
         
-        st.success(feedback_message)
-        st.button("Następne pytanie", on_click=go_to_next_question, use_container_width=True, type="primary")
-    
+        st.write("---")
+
+        # <<< POCZĄTEK ZMIANY: WARUNKOWY TIMER >>>
+        if st.session_state.timer_stopped:
+            st.info("Timer zatrzymany. Kliknij, aby kontynuować.")
+            if st.button("Następne pytanie", use_container_width=True, type="primary"):
+                go_to_next_question()
+                st.rerun()
+        else:
+            placeholder = st.empty()
+            
+            # Przyciski kontrolne
+            col1, col2 = st.columns(2)
+            with col1:
+                if st.button("Przejdź natychmiast", use_container_width=True):
+                    go_to_next_question()
+                    st.rerun()
+            if not last_result['is_correct']: # Przycisk zatrzymania tylko przy złej odpowiedzi
+                with col2:
+                    if st.button("Zatrzymaj timer", use_container_width=True):
+                        st.session_state.timer_stopped = True
+                        st.rerun()
+
+            # Pętla odliczająca
+            for i in range(countdown_duration, 0, -1):
+                placeholder.markdown(f"### Automatyczne przejście za **{i}** s...")
+                time.sleep(1)
+            
+            go_to_next_question()
+            st.rerun()
+        # <<< KONIEC ZMIANY >>>
+
+    # Jeśli odpowiedź nie została udzielona, pokaż opcje
     else:
         is_multi_select = "Wybierz wszystkie poprawne" in question_text
 
