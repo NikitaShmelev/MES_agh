@@ -1,0 +1,20 @@
+# Plik: .streamlit/config.toml
+
+[theme]
+# Podstawowy motyw aplikacji - "light" lub "dark"
+base = "light"
+
+# Główny kolor używany dla interaktywnych elementów
+primaryColor = "#007bff"
+
+# Kolor tła głównej zawartości
+backgroundColor = "#FFFFFF"
+
+# Kolor tła dla elementów drugorzędnych (np. panel boczny)
+secondaryBackgroundColor = "#F0F2F6"
+
+# Kolor tekstu
+textColor = "#31333F"
+
+# Czcionka
+font = "sans serif"

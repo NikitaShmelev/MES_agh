@@ -1,0 +1,80 @@
+/* Plik: style.css */
+
+/* Ogólny kontener aplikacji dla lepszych odstępów */
+[data-testid="stAppViewContainer"] > .main .block-container {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+}
+
+/* Styl dla pytania */
+h3 {
+    font-size: 1.5rem; /* Większa czcionka dla pytania */
+    margin-bottom: 1rem;
+}
+
+/* Styl dla przycisków odpowiedzi (pytania jednokrotnego wyboru) */
+div[data-testid="stButton"] > button {
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
+    padding: 12px 20px;
+    background-color: #f9f9f9;
+    color: #333;
+    font-weight: 500;
+    width: 100%;
+    text-align: left;
+    transition: all 0.2s ease-in-out;
+}
+
+div[data-testid="stButton"] > button:hover {
+    border-color: #007bff; /* Kolor ramki przy najechaniu */
+    background-color: #eef7ff;
+}
+
+div[data-testid="stButton"] > button:focus {
+    box-shadow: 0 0 0 2px #cce5ff;
+    border-color: #007bff;
+}
+
+/* Styl dla pól wyboru (pytania wielokrotnego wyboru) */
+div[data-testid="stCheckbox"] {
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
+    padding: 12px 20px;
+    background-color: #f9f9f9;
+    margin-bottom: 0.5rem;
+    transition: all 0.2s ease-in-out;
+}
+
+div[data-testid="stCheckbox"]:hover {
+    border-color: #007bff;
+    background-color: #eef7ff;
+}
+
+
+/* Styl dla przycisku "Sprawdź odpowiedzi" i "Następne pytanie" */
+div[data-testid="stButton"] > button.st-emotion-cache-19rxjzo {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    text-align: center;
+}
+
+div[data-testid="stButton"] > button.st-emotion-cache-19rxjzo:hover {
+    background-color: #0056b3;
+    border: none;
+}
+
+
+/* Poprawione style dla komunikatów zwrotnych */
+div[data-testid="stAlert"] {
+    border-radius: 10px;
+    padding: 1rem;
+    font-size: 1.1rem;
+}
+
+/* Dostosowanie odstępów */
+.st-emotion-cache-z5fcl4 {
+    gap: 0.5rem; /* Zmniejsza odstęp między przyciskami w kolumnach */
+}

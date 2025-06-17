@@ -10,6 +10,15 @@ st.set_page_config(
     layout="centered"
 )
 
+# --- FUNKCJA DO ŁADOWANIA LOKALNEGO CSS ---
+def local_css(file_name):
+    with open(file_name) as f:
+        st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
+
+# Wywołanie funkcji, aby załadować style z pliku style.css
+local_css("style.css")
+
+
 # --- Funkcje pomocnicze ---
 
 @st.cache_data
@@ -71,13 +80,11 @@ def go_to_next_question():
 
 # --- Główna logika aplikacji ---
 
-st.title("🚀 Kahoot z Metody Elementów Skończonych")
+st.title("🚀 Quiz z Metody Elementów Skończonych")
 
-# Inicjalizacja stanu, jeśli aplikacja jest uruchamiana po raz pierwszy
 if 'quiz_started' not in st.session_state:
     st.session_state.quiz_started = False
 
-# Przycisk restartu w panelu bocznym
 if st.sidebar.button("Zrestartuj test", type="primary"):
     reset_quiz()
 
@@ -90,14 +97,12 @@ if not st.session_state.quiz_started:
 # --- Przebieg Quizu ---
 elif st.session_state.current_q_index_ptr < st.session_state.total_questions:
     
-    # Pobierz bieżące pytanie
     question_idx = st.session_state.question_indices[st.session_state.current_q_index_ptr]
     question_data = st.session_state.questions[question_idx]
     question_text = question_data["question"]
     options = question_data.get("options", {})
     correct_answer = question_data["correct_answer"]
 
-    # Pasek postępu
     progress = (st.session_state.current_q_index_ptr) / st.session_state.total_questions
     st.progress(progress, text=f"Pytanie {st.session_state.current_q_index_ptr + 1} z {st.session_state.total_questions}")
     
@@ -105,12 +110,9 @@ elif st.session_state.current_q_index_ptr < st.session_state.total_questions:
     st.markdown(question_text)
     st.write("---")
 
-    # Jeśli odpowiedź została udzielona, pokaż feedback
     if st.session_state.answer_submitted:
         last_result = st.session_state.quiz_history[-1]
         
-        # <<< POCZĄTEK ZMIANY W BLOKU FEEDBACKU >>>
-        # Przygotuj sformatowany tekst dla poprawnej/poprawnych odpowiedzi
         if isinstance(last_result['correct_answer'], list):
             correct_answer_display = "\n" + "\n".join([f"- {ans}" for ans in last_result['correct_answer']])
             correct_answer_heading = "**Poprawne odpowiedzi:**"
@@ -126,21 +128,19 @@ elif st.session_state.current_q_index_ptr < st.session_state.total_questions:
             feedback_message = f"❌ Niestety, źle. Twoja odpowiedź: **{user_answer_str}**. {correct_answer_heading}{correct_answer_display}"
         
         st.success(feedback_message)
-        # <<< KONIEC ZMIANY W BLOKU FEEDBACKU >>>
-        
         st.button("Następne pytanie", on_click=go_to_next_question, use_container_width=True, type="primary")
     
-    # Jeśli odpowiedź nie została udzielona, pokaż opcje
     else:
         is_multi_select = "Wybierz wszystkie poprawne" in question_text
 
         if is_multi_select:
+            st.markdown("Wybierz jedną lub więcej odpowiedzi i kliknij 'Sprawdź'.")
             user_answers = []
             for option_text in options.values():
                 if st.checkbox(option_text, key=option_text):
                     user_answers.append(option_text)
             
-            if st.button("Sprawdź odpowiedzi", use_container_width=True):
+            if st.button("Sprawdź odpowiedzi", use_container_width=True, type="primary"):
                 is_correct = set(user_answers) == set(correct_answer)
                 if is_correct:
                     st.session_state.score += 1
@@ -154,6 +154,7 @@ elif st.session_state.current_q_index_ptr < st.session_state.total_questions:
                 st.session_state.answer_submitted = True
                 st.rerun()
         else:
+            st.markdown("Wybierz jedną odpowiedź:")
             cols = st.columns(2)
             col_idx = 0
             for option_text in options.values():
@@ -172,7 +173,7 @@ elif st.session_state.current_q_index_ptr < st.session_state.total_questions:
                     st.rerun()
                 col_idx = (col_idx + 1) % 2
 
-# --- Ekran końcowy ze statystykami ---
+# --- Ekran końcowy ---
 else:
     st.balloons()
     st.header("🎉 Koniec Quizu! 🎉")
