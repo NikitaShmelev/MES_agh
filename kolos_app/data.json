@@ -1,0 +1,403 @@
+[
+  {
+    "question": "Dla elementu jednowymiarowego podano wartość temperatury w węźle $x_{1}=2,5$ oraz $x_{2}=4.45$ odpowiednio $T_{1}=45C, T_{2}=122C$. Obliczona wartość temperatury w punkcie 3,11 wynosi:",
+    "options": {
+      "a": "69,087",
+      "b": "105,41",
+      "c": "92,78",
+      "d": "Żadna z powyższych",
+      "e": "118,05"
+    },
+    "correct_answer": "69,087"
+  },
+  {
+    "question": "Do obliczenia macierzy lokalnej $[H+Hbc]$ potrzebne jest: (Wybierz wszystkie poprawne)",
+    "options": {
+      "a": "Obliczenie jednej macierzy Jakobiego",
+      "b": "Agregacja",
+      "c": "Całkowanie po powierzchni elementu",
+      "d": "Pochodne funkcji kształtu względem ksi oraz eta"
+    },
+    "correct_answer": [
+      "Całkowanie po powierzchni elementu",
+      "Pochodne funkcji kształtu względem ksi oraz eta"
+    ]
+  },
+  {
+    "question": "Podano współrzędne elementu skończonego czterowęzłowego w przestrzeni 2D: $x1=0, x2=2, x3=3, x4=0, y1=0, y2=0, y3=3, y4=4$. Współrzędne punktu x oraz y odpowiadające punktowi całkowania ksi = -1/√3, eta=-1/√3 wynoszą:",
+    "options": {
+      "a": "x=0,4673, y=0,8006",
+      "b": "x=1,7440, y=0,6786",
+      "c": "x=2,1993, y=2,532",
+      "d": "x=0,58932, y=2,9880",
+      "e": "Żadne z powyższych"
+    },
+    "correct_answer": "x=0,4673, y=0,8006"
+  },
+  {
+    "question": "Wartość jakobianu przekształcenia dla elementu skończonego o współrzędnych węzłów $x1=1.5$ oraz $x2=5,45$ i trójpunktowego schematu całkowania wynosi:",
+    "options": {
+      "a": "0,975",
+      "b": "1,975",
+      "c": "1,475",
+      "d": "1,625",
+      "e": "Żadna z powyższych"
+    },
+    "correct_answer": "1,975"
+  },
+  {
+    "question": "Całkowanie macierzy [H] dla 2 i 3 punktowego schematu całkowania: (Wybierz wszystkie poprawne)",
+    "options": {
+      "a": "Nie wpływa na ilość macierzy Jakobiego",
+      "b": "W przypadku całkowania 2 punktowym schematem całkowania wymiar macierzy Jakobiego jest wymiaru 2x2 a 3 punktowego wymiaru ten wynosi 3x3.",
+      "c": "Różni się ilością macierzy Jakobiego"
+    },
+    "correct_answer": "Różni się ilością macierzy Jakobiego"
+  },
+  {
+    "question": "Dla elementu jednowymiarowego podano wartość temperatury w węźle $x1=2,5$ oraz $x2=4,45$ odpowiednio $T1=45C, T2=122C$. Oblicz wartość temperatury w punkcie całkowania ksi = -1,771.",
+    "options": {
+      "a": "136,28",
+      "b": "15,31",
+      "c": "Nie da się obliczyć wartości temperatury",
+      "d": "34,56",
+      "e": "159,38"
+    },
+    "correct_answer": "Nie da się obliczyć wartości temperatury"
+  },
+  {
+    "question": "Warunek brzegowy można wprowadzić na: (Wybierz wszystkie poprawne)",
+    "options": {
+      "a": "Na bok łączący dwa elementy skończone",
+      "b": "Na bok elementu, który nie ma kontaktu z innym elementem skończonym (na tym boku)",
+      "c": "Dowolny węzeł elementu skończonego",
+      "d": "Tylko w przestrzeni 2d"
+    },
+    "correct_answer": "Na bok elementu, który nie ma kontaktu z innym elementem skończonym (na tym boku)"
+  },
+  {
+    "question": "Opracowane na zajęciach oprogramowanie MES 2d wykorzystuje: (Wybierz wszystkie poprawne)",
+    "options": {
+      "a": "Równanie dyfuzji",
+      "b": "Połączony warunek brzegowy konwekcji oraz radiacji",
+      "c": "Prawo radiacji",
+      "d": "Warunek brzegowy stałego strumienia ciepła",
+      "e": "Równanie Fouriera"
+    },
+    "correct_answer": "Równanie Fouriera"
+  },
+  {
+    "question": "Dla elementu jednowymiarowego podano wartość naprężenia w węźle $x_{1}=2,5$ oraz $x_{2}=4,45$ odpowiednio $S_{1}=45MPa, S_{2}=122MPa$. Oblicz wartość naprężenia w punkcie całkowania -0,577.",
+    "options": {
+      "a": "65 MPa",
+      "b": "Nie da się obliczyć wartości naprężenia",
+      "c": "61,28 MPa",
+      "d": "55 MPa"
+    },
+    "correct_answer": "61,28 MPa"
+  },
+  {
+    "question": "Ilość punktów całkowania: (Wybierz wszystkie poprawne)",
+    "options": {
+      "a": "Jest zawsze równa 2 dla boku elementu skończonego",
+      "b": "Mieści się w przedziale 2-16",
+      "c": "Jest zawsze równa ilości węzłów siatki MES",
+      "d": "Może być równa ilości węzłów elementu skończonego"
+    },
+    "correct_answer": "Może być równa ilości węzłów elementu skończonego"
+  },
+  {
+    "question": "Fragment warunku brzegowego (dla dowolnego elementu czterowęzłowego) dokładanego do macierzy H dla zagadnienia transferu ciepła w przestrzeni 2d jest: (Wybierz wszystkie poprawne)",
+    "options": {
+      "a": "Macierzą o wymiarze 2x2 powstałą z wykorzystaniem funkcji kształtu 1d",
+      "b": "Macierzą o wymiarze 4x4 powstałą z wykorzystaniem funkcji kształtu 1d",
+      "c": "Macierzą o wymiarze 4x4 przy czym wszystkie elementy są niezerowe",
+      "d": "Macierzą o wymiarze 4x4 przy czym cztery elementy są zerowe"
+    },
+    "correct_answer": "Macierzą o wymiarze 2x2 powstałą z wykorzystaniem funkcji kształtu 1d"
+  },
+  {
+    "question": "Warunek brzegowy konwekcji:",
+    "options": {
+      "a": "Generuje zmienny strumień ciepła w objętości elementu",
+      "b": "Generuje zmienny strumień ciepła zależny od temperatury obiektu",
+      "c": "Generuje stały strumień ciepła nie zależnie od temperatury obiektu",
+      "d": "Generuje zależny od czasu strumień ciepła"
+    },
+    "correct_answer": "Generuje zmienny strumień ciepła zależny od temperatury obiektu"
+  },
+    {
+    "question": "Dla elementu jednowymiarowego podano wartość temperatury w węźle $x_1=2,5$ oraz $x_2=4,45$ odpowiednio $T_1=45MPa, T_2=122MPa$. Wartość temperatury w punkcie 4,70 wynosi:",
+    "options": {
+      "a": "41,05",
+      "b": "13,80",
+      "c": "131,87",
+      "d": "157,53",
+      "e": "Żadna z powyższych odpowiedzi"
+    },
+    "correct_answer": "Żadna z powyższych odpowiedzi"
+  },
+  {
+    "question": "Macierz Jakobiego 2d: (Wybierz wszystkie poprawne)",
+    "options": {
+      "a": "Obliczana jest w węzłach elementu skończonego",
+      "b": "Jej wartości zależą od kształtu elementu",
+      "c": "Dla elementu o kształcie trapezu ma dwa niezerowe elementy",
+      "d": "Obliczana jest w punktach całkowania"
+    },
+    "correct_answer": [
+      "Jej wartości zależą od kształtu elementu",
+      "Obliczana jest w punktach całkowania"
+    ]
+  },
+  {
+    "question": "Macierz własności mechanicznych materiału [D] w teorii sprężystości zawiera:",
+    "options": {
+      "a": "Granice plastyczności materiału",
+      "b": "Umowną lepkość materiału",
+      "c": "Funkcje kształtu",
+      "d": "Moduł Younga oraz liczbę Poissona",
+      "e": "Twardość materiału oraz jego krzywą umocnienia"
+    },
+    "correct_answer": "Moduł Younga oraz liczbę Poissona"
+  },
+  {
+    "question": "Przy rozwiązaniu za pomocą MES zagadnienia brzegowego teorii sprężystości podstawowymi niewiadomymi parametrami w węzłach siatki są:",
+    "options": {
+      "a": "Tensor odkształceń",
+      "b": "Granica plastyczności materiału",
+      "c": "Przemieszczenia",
+      "d": "Prędkości płynięcia",
+      "e": "Naprężenia"
+    },
+    "correct_answer": "Przemieszczenia"
+  },
+  {
+    "question": "Jakie naprężenia powstają w pręcie o przekroju poprzecznym 2x2 mm i długości 40 mm podczas rozciągania siłą 4 N?",
+    "options": {
+      "a": "200 MPa",
+      "b": "5 Pa",
+      "c": "1 MPa",
+      "d": "220 Woltów",
+      "e": "1 Pa"
+    },
+    "correct_answer": "1 MPa"
+  },
+  {
+    "question": "W trójwymiarowych zagadnieniach teorii sprężystości przy wykorzystaniu MES każdy wewnętrzny węzeł siatki zawiera:",
+    "options": {
+      "a": "3 stopnie swobody",
+      "b": "4 stopnie swobody",
+      "c": "2 stopnie swobody",
+      "d": "1 stopień swobody",
+      "e": "0 stopni swobody"
+    },
+    "correct_answer": "3 stopnie swobody"
+  },
+  {
+    "question": "Jak obliczyć komponenty tensora odkształcenia w elemencie skończonym? Za pomocą:",
+    "options": {
+      "a": "Równań Cauchego",
+      "b": "Macierzy Jacobiego",
+      "c": "Prawa Huka",
+      "d": "Tensora naprężeń",
+      "e": "Granicy plastyczności materiału"
+    },
+    "correct_answer": "Równań Cauchego"
+  },
+    {
+    "question": "W jakich jednostkach jest mierzony moduł sprężystości?",
+    "options": {
+      "a": "$N/M^2$",
+      "b": "$kg/m$",
+      "c": "$N/M^3$",
+      "d": "[-] (bezwymiarowy)",
+      "e": "N"
+    },
+    "correct_answer": "$N/M^2$"
+  },
+  {
+    "question": "W jakich jednostkach jest mierzona liczba Poissona?",
+    "options": {
+      "a": "$N/M^2$",
+      "b": "N/M",
+      "c": "NM",
+      "d": "[-] (bezwymiarowa)",
+      "e": "N"
+    },
+    "correct_answer": "[-] (bezwymiarowa)"
+  },
+  {
+    "question": "Ile węzłów zawiera trójwymiarowy simpleks element?",
+    "options": {
+      "a": "2",
+      "b": "4",
+      "c": "1",
+      "d": "3",
+      "e": "5"
+    },
+    "correct_answer": "4"
+  },
+  {
+    "question": "Co w następującym wzorze oznacza parametr [N]?",
+    "options": {
+      "a": "Macierz funkcji kształtu elementu",
+      "b": "Liczba węzłów elementu",
+      "c": "Macierz sztywności",
+      "d": "Wektor obciążeń",
+      "e": "Macierz Jacobiego"
+    },
+    "correct_answer": "Macierz funkcji kształtu elementu"
+  },
+  {
+    "question": "Interpolacja poszukiwanej funkcji w MES jest wykonywana za pomocą:",
+    "options": {
+      "a": "Funkcji kształtu elementu i parametrów w węzłach",
+      "b": "Macierzy sztywności elementu",
+      "c": "Metody całkowania numerycznego",
+      "d": "Całkowania analitycznego",
+      "e": "Macierzy Jakobiego i parametrów w węzłach"
+    },
+    "correct_answer": "Funkcji kształtu elementu i parametrów w węzłach"
+  },
+  {
+    "question": "Macierz funkcji kształtu elementu ma wymiary:",
+    "options": {
+      "a": "1x10",
+      "b": "1 x Liczba węzłów elementu",
+      "c": "3 x Liczba stopni swobody elementu",
+      "d": "Liczba węzłów elementu X Liczba węzłów elementu",
+      "e": "3x3"
+    },
+    "correct_answer": "1 x Liczba węzłów elementu"
+  },
+  {
+    "question": "Suma wartości funkcji kształtu elementu skończonego jest równa:",
+    "options": {
+      "a": "0",
+      "b": "2",
+      "c": "1",
+      "d": "-1",
+      "e": "Liczbie węzłów elementu"
+    },
+    "correct_answer": "1"
+  },
+  {
+    "question": "Liczba L-współrzędnych w dwuwymiarowym układzie współrzędnych jest równa:",
+    "options": {
+      "a": "2",
+      "b": "1",
+      "c": "4",
+      "d": "3",
+      "e": "0"
+    },
+    "correct_answer": "3"
+  },
+  {
+    "question": "Macierz Jacobiego jest wykorzystywana w MES w celu:",
+    "options": {
+      "a": "Przekształcenia elementów do układu lokalnego",
+      "b": "Rozwiązania układu równań",
+      "c": "Obliczenia funkcji kształtu"
+    },
+    "correct_answer": "Przekształcenia elementów do układu lokalnego"
+  },
+  {
+    "question": "Jeżeli interpolacja funkcji dokonana jest za pomocą funkcji kształtu elementu drugiego rzędu a do transformacji układu współrzędnych są wykorzystywane funkcje kształtu elementu pierwszego rzędu, to ten element nazywa się:",
+    "options": {
+      "a": "Izoparametryczny",
+      "b": "Superparametryczny",
+      "c": "Simpleks",
+      "d": "Liniowy",
+      "e": "Subparametryczny"
+    },
+    "correct_answer": "Subparametryczny"
+  },
+  {
+    "question": "Jaka metoda całkowania numerycznego jest stosowana w MES w większości przypadków?",
+    "options": {
+      "a": "Metoda Galerkina",
+      "b": "Metoda Gaussa",
+      "c": "Metoda Monte Carlo",
+      "d": "Metoda Newtona-Cotesa",
+      "e": "Całkowanie analityczne"
+    },
+    "correct_answer": "Metoda Gaussa"
+  },
+  {
+    "question": "Co pozwala osiągnąć największą możliwą dokładność dla danej liczby punktów całkowania w metodzie całkowania Gaussa?",
+    "options": {
+      "a": "Optymalny wybór metody całkowania",
+      "b": "Optymalny dobór współczynników wagi",
+      "c": "Optymalny dobór położenia punktów całkowania i współczynników wagi",
+      "d": "Optymalny dobór położenia punktów całkowania",
+      "e": "Odpowiedni wybór typu elementu skończonego"
+    },
+    "correct_answer": "Optymalny dobór położenia punktów całkowania i współczynników wagi"
+  },
+  {
+    "question": "Ile węzłów zawiera dwuwymiarowy simpleks element?",
+    "options": {
+      "a": "3",
+      "b": "1",
+      "c": "4",
+      "d": "5",
+      "e": "2"
+    },
+    "correct_answer": "3"
+  },
+  {
+    "question": "Co jest liczone za pomocą podanych niżej równań? $N_{i}=\\frac{1}{2A}(a_{i}+b_{i}X+c_{i}Y)$, $N_{j}=\\frac{1}{2A}(a_{j}+b_{j}X+c_{j}Y)$, $N_{k}=\\frac{1}{2A}(a_{k}+b_{k}X+c_{k}Y)$",
+    "options": {
+      "a": "Funkcji kształtu elementu 2d drugiego stopnia",
+      "b": "Wartości temperatury w elemencie",
+      "c": "Funkcji kształtu elementu 1d drugiego rzędu",
+      "d": "Funkcji kształtu elementu 2d typu simpleks",
+      "e": "Funkcji kształtu elementu 3d"
+    },
+    "correct_answer": "Funkcji kształtu elementu 2d typu simpleks"
+  },
+  {
+    "question": "Do czego służy równanie $t=N_{i}t_{i}+N_{j}t_{j}=[N]\\{t\\}$?",
+    "options": {
+      "a": "Wyznaczenie wartości temperatury w węzłach elementu",
+      "b": "Interpolacja temperatury w elemencie skończonym",
+      "c": "Przekształcenie izoparametryczne",
+      "d": "Obliczenie macierzy sztywności"
+    },
+    "correct_answer": "Interpolacja temperatury w elemencie skończonym"
+  },
+    {
+    "question": "Jakie wymiary ma następująca macierz? $[H]=\\int_{V}k[\\{\\frac{\\partial\\{N\\}}{\\partial x}\\}\\{\\frac{\\partial\\{N\\}}{\\partial x}\\}^{T}+\\{\\frac{\\partial\\{N\\}}{\\partial y}\\}\\{\\frac{\\partial\\{N\\}}{\\partial y}\\}^{T}]dV+\\int_{S}\\alpha\\{N\\}\\{N\\}^{T}dS$",
+    "options": {
+      "a": "Liczba elementów siatki X Liczba elementów siatki",
+      "b": "Liczba węzłów siatki X Liczba węzłów siatki",
+      "c": "3x3",
+      "d": "3 X Liczba węzłów siatki",
+      "e": "Liczba węzłów elementu X Liczba węzłów elementu"
+    },
+    "correct_answer": "Liczba węzłów elementu X Liczba węzłów elementu"
+  },
+  {
+    "question": "W jakich jednostkach są mierzone wartości funkcji kształtu?",
+    "options": {
+      "a": "Stopni C",
+      "b": "Bezwymiarowe",
+      "c": "mm",
+      "d": "MPa",
+      "e": "M"
+    },
+    "correct_answer": "Bezwymiarowe"
+  },
+    {
+    "question": "Klasyczna macierz sztywności w MES jest:",
+    "options": {
+      "a": "Jednostkowa",
+      "b": "Symetryczna",
+      "c": "Nie symetryczna",
+      "d": "Zerowa",
+      "e": "Jak w filmie Matrix"
+    },
+    "correct_answer": "Symetryczna"
+  }
+]
