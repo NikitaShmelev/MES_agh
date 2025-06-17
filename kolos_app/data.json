@@ -1,16 +1,5 @@
 [
   {
-    "question": "Dla elementu jednowymiarowego podano wartość temperatury w węźle $x_{1}=2,5$ oraz $x_{2}=4.45$ odpowiednio $T_{1}=45C, T_{2}=122C$. Obliczona wartość temperatury w punkcie 3,11 wynosi:",
-    "options": {
-      "a": "69,087",
-      "b": "105,41",
-      "c": "92,78",
-      "d": "Żadna z powyższych",
-      "e": "118,05"
-    },
-    "correct_answer": "69,087"
-  },
-  {
     "question": "Do obliczenia macierzy lokalnej $[H+Hbc]$ potrzebne jest: (Wybierz wszystkie poprawne)",
     "options": {
       "a": "Obliczenie jednej macierzy Jakobiego",
