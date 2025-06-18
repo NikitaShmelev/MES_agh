@@ -52,7 +52,7 @@
       "b": "W przypadku całkowania 2 punktowym schematem całkowania wymiar macierzy Jakobiego jest wymiaru 2x2 a 3 punktowego wymiaru ten wynosi 3x3.",
       "c": "Różni się ilością macierzy Jakobiego"
     },
-    "correct_answer": "Różni się ilością macierzy Jakobiego"
+    "correct_answer": ["Różni się ilością macierzy Jakobiego"]
   },
   {
     "question": "Dla elementu jednowymiarowego podano wartość temperatury w węźle $x1=2,5$ oraz $x2=4,45$ odpowiednio $T1=45C, T2=122C$. Oblicz wartość temperatury w punkcie całkowania ksi = -1,771.",
@@ -73,7 +73,7 @@
       "c": "Dowolny węzeł elementu skończonego",
       "d": "Tylko w przestrzeni 2d"
     },
-    "correct_answer": "Na bok elementu, który nie ma kontaktu z innym elementem skończonym (na tym boku)"
+    "correct_answer": ["Na bok elementu, który nie ma kontaktu z innym elementem skończonym (na tym boku)"]
   },
   {
     "question": "Opracowane na zajęciach oprogramowanie MES 2d wykorzystuje: (Wybierz wszystkie poprawne)",
@@ -84,7 +84,7 @@
       "d": "Warunek brzegowy stałego strumienia ciepła",
       "e": "Równanie Fouriera"
     },
-    "correct_answer": "Równanie Fouriera"
+    "correct_answer": ["Równanie Fouriera"]
   },
   {
     "question": "Dla elementu jednowymiarowego podano wartość naprężenia w węźle $x_{1}=2,5$ oraz $x_{2}=4,45$ odpowiednio $S_{1}=45MPa, S_{2}=122MPa$. Oblicz wartość naprężenia w punkcie całkowania -0,577.",
@@ -104,7 +104,7 @@
       "c": "Jest zawsze równa ilości węzłów siatki MES",
       "d": "Może być równa ilości węzłów elementu skończonego"
     },
-    "correct_answer": "Może być równa ilości węzłów elementu skończonego"
+    "correct_answer": ["Może być równa ilości węzłów elementu skończonego"]
   },
   {
     "question": "Fragment warunku brzegowego (dla dowolnego elementu czterowęzłowego) dokładanego do macierzy H dla zagadnienia transferu ciepła w przestrzeni 2d jest: (Wybierz wszystkie poprawne)",
@@ -114,7 +114,7 @@
       "c": "Macierzą o wymiarze 4x4 przy czym wszystkie elementy są niezerowe",
       "d": "Macierzą o wymiarze 4x4 przy czym cztery elementy są zerowe"
     },
-    "correct_answer": "Macierzą o wymiarze 2x2 powstałą z wykorzystaniem funkcji kształtu 1d"
+    "correct_answer": ["Macierzą o wymiarze 2x2 powstałą z wykorzystaniem funkcji kształtu 1d"]
   },
   {
     "question": "Warunek brzegowy konwekcji:",
