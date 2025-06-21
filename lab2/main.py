@@ -1,4 +1,5 @@
 import matplotlib.pyplot as plt
+import csv
 
 # Parametry
 Rmin = 0.0
@@ -6,11 +7,16 @@ Rmax = 0.05
 AlfaAir = 300.0
 TempBegin = 100.0
 t1 = 1200.0
+# Zmieniono t2 zgodnie z harmonogramem w kodzie FORTRAN.
+# W Twojej poprzedniej wersji było 25.0, co powodowało chłodzenie.
+# W harmonogramie z PDF użyto t1 i t2 (temp. otoczenia),
+# ale dla tego wykresu temperatura otoczenia jest stała i wynosi 1200.
+# Poniższa linia TempAir = t1 to zapewnia.
 t2 = 25.0
 C = 700.0
 Ro = 7800.0
 K = 25.0
-Tau1 = 0.0
+Tau1 = 0.0 # Czas, po którym zmienia się temperatura otoczenia (tutaj bez znaczenia)
 Tau2 = 1000.0
 
 nh = 51
@@ -24,7 +30,8 @@ N1 = [0.5 * (1 - e) for e in E]
 N2 = [0.5 * (1 + e) for e in E]
 
 dR = (Rmax - Rmin) / ne
-dTau = dR ** 2 / (0.5 * a)
+dTau = dR ** 2 / (2 * a) # Zmieniono z 0.5 na 2 zgodnie z kryterium stabilności
+# dTau = dR ** 2 / (0.5 * a)
 TauMax = Tau1 + Tau2
 nTime = int(TauMax / dTau) + 1
 dTau = TauMax / nTime
@@ -33,21 +40,33 @@ dTau = TauMax / nTime
 vrtxCoordX = [Rmin + i * dR for i in range(nh)]
 vrtxTemp = [TempBegin] * nh
 
-# Wyniki do wykresu
-time = []
-t_center = []
-t_surface = []
-dT_list = []
+# Wyniki do wykresu i pliku
+time_history = []
+t_center_history = []
+t_surface_history = []
+dT_list_history = []
 
 Tau = 0.0
-for _ in range(nTime):
+print(f"Rozpoczynam symulację... Krok czasowy dt = {dTau:.4f} s")
+
+for _ in range(nTime + 1):
+    # Zapis bieżących wyników
+    time_history.append(Tau)
+    t_center_history.append(vrtxTemp[0])
+    t_surface_history.append(vrtxTemp[-1])
+    dT_list_history.append(abs(vrtxTemp[0] - vrtxTemp[-1]))
+
+    if Tau >= TauMax:
+        break
+
     aC = [0.0] * nh
     aD = [0.0] * nh
     aE = [0.0] * nh
     aB = [0.0] * nh
 
-    TempAir = t2 if Tau < Tau1 else t1
-    
+    # W tym konkretnym przypadku temperatura otoczenia jest stała
+    TempAir = t1
+
     for ie in range(ne):
         r1 = vrtxCoordX[ie]
         r2 = vrtxCoordX[ie + 1]
@@ -78,7 +97,7 @@ for _ in range(nTime):
         aB[ie] += Fe[0]
         aB[ie + 1] += Fe[1]
 
-    # Rozwiąż układ trójdiagonalny (jak solve_tridiagonal)
+    # Rozwiąż układ trójdiagonalny (algorytm Thomasa)
     for i in range(1, nh):
         m = aC[i] / aD[i - 1]
         aD[i] -= m * aE[i - 1]
@@ -88,32 +107,42 @@ for _ in range(nTime):
     for i in range(nh - 2, -1, -1):
         aB[i] = (aB[i] - aE[i] * aB[i + 1]) / aD[i]
 
-    vrtxTemp = aB.copy()
-    dT = abs(vrtxTemp[0] - vrtxTemp[-1])
-
-    time.append(Tau)
-    t_center.append(vrtxTemp[0])
-    t_surface.append(vrtxTemp[-1])
-    dT_list.append(dT)
-
+    vrtxTemp = aB
     Tau += dTau
 
-# Wykres temperatur
-plt.plot(time, t_surface, label="1 – powierzchnia")
-plt.plot(time, t_center, label="2 – oś")
+print("Symulacja zakończona.")
+
+
+filename = "wyniki_symulacji.csv"
+headers = ['Czas (s)', 'Temperatura w osi (C)', 'Temperatura na powierzchni (C)', 'Roznica dT (C)']
+
+with open(filename, 'w', newline='', encoding='utf-8') as csvfile:
+    writer = csv.writer(csvfile)
+    writer.writerow(headers)
+    for row in zip(time_history, t_center_history, t_surface_history, dT_list_history):
+        writer.writerow([f"{val:.4f}" for val in row])
+
+print(f"Wyniki zostały zapisane do pliku: {filename}")
+
+
+plt.figure(figsize=(10, 7))
+plt.plot(time_history, t_surface_history, label="1 – na powierzchni wsadu")
+plt.plot(time_history, t_center_history, label="2 – w osi wsadu")
 plt.xlabel("Czas [s]")
 plt.ylabel("Temperatura [°C]")
-plt.title("Rozkład temperatury – Python")
+plt.title("Wyniki obliczenia nagrzewania wsadu o przekroju okrągłym")
 plt.grid(True)
 plt.legend()
 plt.tight_layout()
 plt.show()
 
 # Wykres dT
-plt.plot(time, dT_list, label="ΔT", color="black")
+plt.figure(figsize=(10, 7))
+plt.plot(time_history, dT_list_history, label="ΔT", color="black")
 plt.xlabel("Czas [s]")
 plt.ylabel("Różnica temperatur [°C]")
 plt.title("ΔT między powierzchnią a osią")
 plt.grid(True)
+plt.legend()
 plt.tight_layout()
 plt.show()
