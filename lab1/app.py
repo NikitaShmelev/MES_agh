@@ -21,47 +21,51 @@ dir_val = st.sidebar.radio("Flow direction (dir)", options=(1, -1), index=0)
 delta_L = LG / ME
 
 if st.sidebar.button("🔢 Solve"):
-    # 2) build elements & assemble
-    MN = ME + 1
-    H_final = np.zeros((MN, MN))
-    P_final = np.zeros((MN, 1))
-    elements = []
-    for i in range(ME):
-        el = Element(length=delta_L, S=S, k=k,
-                     alpha=alpha, q=q, t_sr=t_sr,
-                     dir=dir_val,
-                     is_start=(i==0), is_end=(i==ME-1))
-        elements.append(el)
-        # assemble
-        for r in range(2):
-            for c in range(2):
-                H_final[i+r, i+c] += el.H[r, c]
-        for r in range(2):
-            P_final[i+r, 0] += el.P[r, 0]
+    # Sprawdzenie, czy liczba elementów przekracza limit
+    if ME > 10:
+        st.warning(
+            "Liczba elementów (ME) jest większa niż 10. "
+            "Obliczenia nie zostaną wykonane ze względu na potencjalne wysokie koszty obliczeniowe."
+        )
+    else:
+        # 2) build elements & assemble
+        MN = ME + 1
+        H_final = np.zeros((MN, MN))
+        P_final = np.zeros((MN, 1))
+        elements = []
+        for i in range(ME):
+            el = Element(length=delta_L, S=S, k=k,
+                         alpha=alpha, q=q, t_sr=t_sr,
+                         dir=dir_val,
+                         is_start=(i==0), is_end=(i==ME-1))
+            elements.append(el)
+            # assemble
+            for r in range(2):
+                for c in range(2):
+                    H_final[i+r, i+c] += el.H[r, c]
+            for r in range(2):
+                P_final[i+r, 0] += el.P[r, 0]
 
-    # 3) helper to convert numpy → LaTeX bmatrix
-    def to_latex(A: np.ndarray) -> str:
-        rows = [" & ".join(f"{v:.2f}" for v in row) for row in A]
-        body = r"\\ ".join(rows)
-        return rf"\begin{{bmatrix}}{body}\end{{bmatrix}}"
+        # 3) helper to convert numpy → LaTeX bmatrix
+        def to_latex(A: np.ndarray) -> str:
+            rows = [" & ".join(f"{v:.2f}" for v in row) for row in A]
+            body = r"\\ ".join(rows)
+            return rf"\begin{{bmatrix}}{body}\end{{bmatrix}}"
 
-    # 4) display
-    st.subheader("Assembled Matrices")
-    col1, col2 = st.columns(2)
-    with col1:
-        st.markdown("**\(H\) matrix:**")
-        st.latex(r"H = " + to_latex(H_final))
-        # st.dataframe(H_final, width=300)
-    with col2:
-        st.markdown("**\(P\) vector:**")
-        st.latex(r"P = " + to_latex(P_final))
-        # st.dataframe(P_final, width=200)
+        # 4) display
+        st.subheader("Assembled Matrices")
+        col1, col2 = st.columns(2)
+        with col1:
+            st.markdown("**\(H\) matrix:**")
+            st.latex(r"H = " + to_latex(H_final))
+        with col2:
+            st.markdown("**\(P\) vector:**")
+            st.latex(r"P = " + to_latex(P_final))
 
-    st.markdown("**Equation to solve:**")
-    st.latex(r"H\,t + P = 0")
+        st.markdown("**Equation to solve:**")
+        st.latex(r"H\,t + P = 0")
 
-    # 5) solve and show t
-    t = Element.solve_equation(H_final, P_final)
-    st.subheader("Solution vector \(t\)")
-    st.latex(r"t = " + to_latex(t.reshape(-1,1)))
-    # st.dataframe(t, width=200)
+        # 5) solve and show t
+        t = Element.solve_equation(H_final, P_final)
+        st.subheader("Solution vector \(t\)")
+        st.latex(r"t = " + to_latex(t.reshape(-1,1)))
