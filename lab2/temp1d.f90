@@ -30,7 +30,7 @@ subroutine Temp_1d(Rmin, Rmax, AlfaAir, TempBegin, t1, t2, C, Ro, K, Tau1, Tau2)
   real(8), allocatable :: aC(:), aD(:), aE(:), aB(:)
   integer :: nPrint
 
-  nh = 51
+  nh = 501
   ne = nh - 1
   Np = 2
   a = K / (C * Ro)
