@@ -1,0 +1,376 @@
+[
+  {
+    "question": "Program rozważany w ramach analizy Amdahla: (Wybierz wszystkie poprawne)",
+    "options": {
+      "a": "zakłada idealne zrównoważenie obciążenia procesorów/rdzeni przy wykonywaniu części równoległej",
+      "b": "wykazuje duży narzut na komunikację",
+      "c": "ma rozmiar rosnący wraz z liczbą procesorów",
+      "d": "jest programem idealnie skalowalnym",
+      "e": "ma stały rozmiar niezależnie od liczby procesorów"
+    },
+    "correct_answer": [
+      "ma stały rozmiar niezależnie od liczby procesorów",
+      "zakłada idealne zrównoważenie obciążenia procesorów/rdzeni przy wykonywaniu części równoległej"
+    ]
+  },
+  {
+    "question": "Liniowa (asymptotycznie) skalowalność w sensie silnym: (Wybierz wszystkie poprawne)",
+    "options": {
+      "a": "oznacza asymptotycznie liniowe przeskalowane przyspieszenie względne obliczeń równoległych",
+      "b": "jest możliwa do osiągnięcia kiedy całkowity, narzut obliczeń równoległych pozostaje stały, niezależnie od liczby procesorów/rdzeni",
+      "c": "jest możliwa do osiągnięcia kiedy narzut obliczeń równoległych na pojedynczy procesor/rdzeń pozostaje stały",
+      "d": "oznacza asymptotycznie liniowe, (idealne) przyspieszenie względne (perfect speed-up)",
+      "e": "w przypadku istnienia komunikacji o czasie rosnącym wraz z liczbą procesorów/rdzeni nie jest możliwa do osiągnięcia",
+      "f": "nigdy nie jest osiągana przez rzeczywiste programy"
+    },
+    "correct_answer": [
+      "jest możliwa do osiągnięcia kiedy całkowity, narzut obliczeń równoległych pozostaje stały, niezależnie od liczby procesorów/rdzeni",
+      "w przypadku istnienia komunikacji o czasie rosnącym wraz z liczbą procesorów/rdzeni nie jest możliwa do osiągnięcia"
+    ]
+  },
+  {
+    "question": "Liniowa (asymptotycznie) skalowalność w sensie słabym: (Wybierz wszystkie poprawne)",
+    "options": {
+      "a": "oznacza asymptotycznie liniowe przeskalowane przyspieszenie względne obliczeń równoległych",
+      "b": "oznacza asymptotycznie liniowe (idealne) przyspieszenie względne (perfect speed-up)",
+      "c": "oznacza (asymptotycznie) stały czas wykonania przy rozmiarze zadania rosnącym proporcjonalnie do liczby procesorów",
+      "d": "jest możliwa do osiągnięcia kiedy narzut obliczeń równoległych na pojedynczy procesor/rdzeń pozostaje stały dla sekwencji zadań o stałym rozmiarze na pojedynczy procesor/rdzeń"
+    },
+    "correct_answer": [
+      "oznacza (asymptotycznie) stały czas wykonania przy rozmiarze zadania rosnącym proporcjonalnie do liczby procesorów",
+      "jest możliwa do osiągnięcia kiedy narzut obliczeń równoległych na pojedynczy procesor/rdzeń pozostaje stały dla sekwencji zadań o stałym rozmiarze na pojedynczy procesor/rdzeń",
+      "oznacza asymptotycznie liniowe przeskalowane przyspieszenie względne obliczeń równoległych"
+    ]
+  },
+  {
+    "question": "Zmienna lokalna funkcji staje się zmienną prywatną wątków w obszarze równoległym jeśli w kodzie: (Wybierz wszystkie poprawne)",
+    "options": {
+      "a": "jest objęta jedną z klauzul private, firstprivate w dyrektywie parallel danego obszaru równoległego",
+      "b": "jest zmienną sterującą pętli for",
+      "c": "jest zmienną sterującą równoległej pętli for",
+      "d": "jest objęta jedną z klauzul private, firstprivate w dyrektywie parallel dowolnego obszaru równoległego w danej funkcji"
+    },
+    "correct_answer": [
+      "jest objęta jedną z klauzul private, firstprivate w dyrektywie parallel danego obszaru równoległego",
+      "jest zmienną sterującą równoległej pętli for"
+    ]
+  },
+  {
+    "question": "Po powrocie z procedury odbierania nieblokującego MPI_Irecv(&a,...,&req), mamy pewność, że wartość 'a' jest wartością otrzymaną w komunikacie: (Wybierz wszystkie poprawne)",
+    "options": {
+      "a": "po powrocie z procedury MPI_Test(&req, &flag, &stat) i sprawdzeniu odpowiedniej wartości zmiennej flag",
+      "b": "po sprawdzeniu odpowiedniej zawartości obiektu req",
+      "c": "po powrocie z procedury MPI_Wait(&req, &stat)",
+      "d": "od razu"
+    },
+    "correct_answer": [
+      "po powrocie z procedury MPI_Test(&req, &flag, &stat) i sprawdzeniu odpowiedniej wartości zmiennej flag",
+      "po powrocie z procedury MPI_Wait(&req, &stat)"
+    ]
+  },
+  {
+    "question": "Model dostępu do pamięci wspólnej ccNUMA (cache coherent non-uniform memory access): (Wybierz wszystkie poprawne)",
+    "options": {
+      "a": "oznacza, że zawartość każdej komórki pamięci jest dostępna dla każdego procesora z poziomu rozkazu asemblera (jednolita przestrzeń adresowa)",
+      "b": "oznacza, że zawartość każdej komórki jest dostępna dla każdego procesora w teoretycznie takim samym czasie",
+      "c": "jest charakterystyczny dla współczesnych serwerów wieloprocesorowych",
+      "d": "jest charakterystyczny dla systemów SMP (symmetric multiprocessing)",
+      "e": "wymaga architektury przełącznicy krzyżowej (crossbar switch) lub sieci wielostopniowej (multistage network)"
+    },
+    "correct_answer": [
+      "oznacza, że zawartość każdej komórki pamięci jest dostępna dla każdego procesora z poziomu rozkazu asemblera (jednolita przestrzeń adresowa)",
+      "jest charakterystyczny dla współczesnych serwerów wieloprocesorowych"
+    ]
+  },
+  {
+    "question": "W przykładowym kodzie: x=2*y+z; y=4*sin(t*3.14); a[i]=3*x+w; występują następujące zależności: (Wybierz wszystkie poprawne)",
+    "options": {
+      "a": "anty-zależności (WAR) ze względu na y",
+      "b": "zależności rzeczywiste (RAW) ze względu na x",
+      "c": "anty-zależności (WAR) ze względu na x",
+      "d": "zależności rzeczywiste (RAW) ze względu na t",
+      "e": "zależności rzeczywiste (RAW) ze względu na y"
+    },
+    "correct_answer": [
+      "anty-zależności (WAR) ze względu na y",
+      "zależności rzeczywiste (RAW) ze względu na x"
+    ]
+  },
+  {
+    "question": "Koniecznymi cechami komputerów masowo równoległych i klastrów wysokiej wydajności (współczesnych superkomputerów, np. z listy Top500) są: (Wybierz wszystkie poprawne)",
+    "options": {
+      "a": "posiadanie wirtualnej (rozproszonej) pamięci wspólnej",
+      "b": "niezależna (niezsynchronizowana) praca procesorów/rdzeni",
+      "c": "specjalna (inna niż np. Ethernet) technologia sieci połączeń międzyprocesorowych",
+      "d": "brak pamięci globalnej",
+      "e": "funkcjonowanie zgodnie z modelem MIMD"
+    },
+    "correct_answer": [
+      "niezależna (niezsynchronizowana) praca procesorów/rdzeni",
+      "funkcjonowanie zgodnie z modelem MIMD"
+    ]
+  },
+  {
+    "question": "Model programowania SPMD (single program multiple data): (Wybierz wszystkie poprawne)",
+    "options": {
+      "a": "dotyczy tylko równoległości wątków, nie dotyczy równoległości procesów",
+      "b": "jeśli dotyczy procesów to wymaga przekazania każdemu procesowi identycznego kodu",
+      "c": "jest często realizowany przez wprowadzenie do każdego wątku, realizującego ten sam kod zmiennej zawierającej identyfikator wątku, różny dla każdego wątku",
+      "d": "wymaga, aby każda linijka kodu była wykonywania przez wszystkie wątki, pracujące na różnych danych",
+      "e": "wymaga aby każdy wątek miał dostęp do pewnego zbioru zmiennych wspólnych"
+    },
+    "correct_answer": [
+      "jeśli dotyczy procesów to wymaga przekazania każdemu procesowi identycznego kodu",
+      "jest często realizowany przez wprowadzenie do każdego wątku, realizującego ten sam kod zmiennej zawierającej identyfikator wątku, różny dla każdego wątku"
+    ]
+  },
+  {
+    "question": "Architektura magistrali (bus): (Wybierz wszystkie poprawne)",
+    "options": {
+      "a": "nie pozwala na funkcjonowanie protokołów zgodności pamięci podręcznej",
+      "b": "jest najtańszym sposobem tworzenia systemów wieloprocesorowych",
+      "c": "wymusza istnienie tzw. mostków: północnego (northbridge) i południowego (southbridge)",
+      "d": "nie jest możliwa dla systemów o liczbie procesorów ponad 4",
+      "e": "nie skaluje się (dla każdej aplikacji powyżej pewnej liczby procesorów dalsze ich dodawanie nie zwiększa wydajności systemu)"
+    },
+    "correct_answer": [
+      "jest najtańszym sposobem tworzenia systemów wieloprocesorowych",
+      "nie skaluje się (dla każdej aplikacji powyżej pewnej liczby procesorów dalsze ich dodawanie nie zwiększa wydajności systemu)"
+    ]
+  },
+  {
+    "question": "Wątek utworzony przez funkcję pthread_create kończy swoją pracę i jest niszczony w następstwie: (Wybierz wszystkie poprawne)",
+    "options": {
+      "a": "wywołania pthread_exit przez wątek (w dowolnej funkcji, nie tylko funkcji startowej)",
+      "b": "wywołania funkcji pthread_exit przez dowolny inny wątek w procesie",
+      "c": "zakończenia wykonywania funkcji startowej wątku",
+      "d": "wywołania funkcji exit przez dowolny wątek w procesie",
+      "e": "standardowego zakończenia wykonywania funkcji main przez wątek główny procesu (bez exit lub pthread_exit)"
+    },
+    "correct_answer": [
+      "wywołania pthread_exit przez wątek (w dowolnej funkcji, nie tylko funkcji startowej)",
+      "zakończenia wykonywania funkcji startowej wątku",
+      "wywołania funkcji exit przez dowolny wątek w procesie",
+      "standardowego zakończenia wykonywania funkcji main przez wątek główny procesu (bez exit lub pthread_exit)"
+    ]
+  },
+  {
+    "question": "Ponadliniowe przyspieszenie obliczeń może zostać uzyskane: (Wybierz wszystkie poprawne)",
+    "options": {
+      "a": "nigdy",
+      "b": "przy wydajniejszym wykorzystaniu sprzętu (np. pamięci podręcznej) w obliczeniach równoległych",
+      "c": "w sytuacji mniejszej liczby operacji przy realizacji równoległej",
+      "d": "przy wyższej wydajności (krótszy czas wykonania pojedynczej operacji) w trakcie obliczeń równoległych",
+      "e": "przy odpowiednio dużej liczbie procesorów/rdzeni"
+    },
+    "correct_answer": [
+      "przy wydajniejszym wykorzystaniu sprzętu (np. pamięci podręcznej) w obliczeniach równoległych",
+      "w sytuacji mniejszej liczby operacji przy realizacji równoległej",
+      "przy wyższej wydajności (krótszy czas wykonania pojedynczej operacji) w trakcie obliczeń równoległych"
+    ]
+  },
+  {
+    "question": "Programista pisząc kod źródłowy programu równoległego w standardowym języku programowania nie ma wpływu na równoległość wykonania kodu na poziomie: (Wybierz wszystkie poprawne)",
+    "options": {
+      "a": "wykonania pojedynczego rozkazu (ILP - instruction level parallelism)",
+      "b": "realizacji pętli (loop level parallelism)",
+      "c": "wykonania funkcji/metod realizujących pewne zadanie (task level parallelism)",
+      "d": "wykonania wielu programów jako różnych zadań na serwerze",
+      "e": "wykonania rozkazów SIMD (wektorowych)"
+    },
+    "correct_answer": [
+      "wykonania pojedynczego rozkazu (ILP - instruction level parallelism)",
+      "wykonania rozkazów SIMD (wektorowych)"
+    ]
+  },
+  {
+    "question": "W wyniku wykonania procedury systemowej fork powstają dwa procesy realizujące ten sam kod, które:",
+    "options": {
+      "a": "pełnią różne role - jeden jest procesem nadrzędnym, drugi potomnym - i mogą być synchronizowane",
+      "b": "są w pełni niezależne i nie mogą być synchronizowane"
+    },
+    "correct_answer": "pełnią różne role - jeden jest procesem nadrzędnym, drugi potomnym - i mogą być synchronizowane"
+  },
+  {
+    "question": "Rozkazy typu SIMD we współczesnych mikroprocesorach CPU oznaczają rozkazy: (Wybierz wszystkie poprawne)",
+    "options": {
+      "a": "wykonywane we współpracy z koprocesorem wektorowym",
+      "b": "wykonywane równolegle na kilku liczbach",
+      "c": "stosowane wyłącznie do operacji na liczbach zmiennoprzecinkowych",
+      "d": "dotyczące zawartości rejestrów zawierających kilka spakowanych liczb",
+      "e": "dotyczące wyłącznie grafiki"
+    },
+    "correct_answer": [
+      "wykonywane równolegle na kilku liczbach",
+      "dotyczące zawartości rejestrów zawierających kilka spakowanych liczb"
+    ]
+  },
+  {
+    "question": "Argumentami funkcji tworzenia nowego wątku pthread_create są m.in.: (Wybierz wszystkie poprawne)",
+    "options": {
+      "a": "rozmiar stosu przydzielonego wątkowi",
+      "b": "argument dla funkcji startowej wątku będący wskaźnikiem",
+      "c": "nazwa funkcji, którą zacznie wykonywać wątek (wskaźnik do funkcji)",
+      "d": "wskaźnik do obiektu określającego atrybuty wątku",
+      "e": "adres pod którym zapisany zostanie identyfikator wątku"
+    },
+    "correct_answer": [
+      "argument dla funkcji startowej wątku będący wskaźnikiem",
+      "nazwa funkcji, którą zacznie wykonywać wątek (wskaźnik do funkcji)",
+      "wskaźnik do obiektu określającego atrybuty wątku",
+      "adres pod którym zapisany zostanie identyfikator wątku"
+    ]
+  },
+  {
+    "question": "Klauzula 'firstprivate' w OpenMP oznacza, że objęta nią zmienna:",
+    "options": {
+      "a": "będzie zmienną prywatną wątków inicjowaną wartością sprzed rozpoczęcia wykonywania dyrektywy",
+      "b": "będzie pierwszą zmienną prywatną wątków",
+      "c": "będzie prywatna dla pierwszego wątku",
+      "d": "będzie zmienną prywatną wątków inicjowaną jako pierwsza"
+    },
+    "correct_answer": "będzie zmienną prywatną wątków inicjowaną wartością sprzed rozpoczęcia wykonywania dyrektywy"
+  },
+  {
+    "question": "Sieć wielostopniowa (multistage network): (Wybierz wszystkie poprawne)",
+    "options": {
+      "a": "liczba stopni pośrednich (warstw przełączników) jest znacznie mniejsza od liczby procesorów p, np. rzędu log(p)",
+      "b": "nigdy nie ulega zablokowaniu",
+      "c": "wymaga prostych przełączników o 2 wejściach i 2 wyjściach",
+      "d": "posiada maksymalną przepustowość proporcjonalną do liczby procesorów",
+      "e": "jest najdroższym wariantem sieci"
+    },
+    "correct_answer": [
+      "liczba stopni pośrednich (warstw przełączników) jest znacznie mniejsza od liczby procesorów p, np. rzędu log(p)",
+      "wymaga prostych przełączników o 2 wejściach i 2 wyjściach",
+      "posiada maksymalną przepustowość proporcjonalną do liczby procesorów"
+    ]
+  },
+  {
+    "question": "Architektura DSM (distributed shared memory): (Wybierz wszystkie poprawne)",
+    "options": {
+      "a": "jest najlepiej skalującą się architekturą maszyn z pamięcią wspólną",
+      "b": "jest związana z modelem dostępu do pamięci UMA (uniform memory access)",
+      "c": "jest związana z modelem dostępu do pamięci NUMA (nonuniform memory access)",
+      "d": "może zostać zrealizowana programowo na klastrach"
+    },
+    "correct_answer": [
+      "jest najlepiej skalującą się architekturą maszyn z pamięcią wspólną",
+      "jest związana z modelem dostępu do pamięci NUMA (nonuniform memory access)",
+      "może zostać zrealizowana programowo na klastrach"
+    ]
+  },
+  {
+    "question": "Zmienna jest zmienną wspólną w obszarze równoległym OpenMP (utworzonym z klauzulą default(none)) jeżeli w kodzie: (Wybierz wszystkie poprawne)",
+    "options": {
+      "a": "jest objęta klauzulą shared dowolnego obszaru równoległego w danej funkcji",
+      "b": "jest zdefiniowana wewnątrz obszaru równoległego i nie jest objęta żadną dyrektywą",
+      "c": "jest zdefiniowana wewnątrz obszaru równoległego jako zmienna statyczna (static) i nie jest objęta żadną dyrektywą",
+      "d": "jest objęta klauzulą shared danego obszaru równoległego"
+    },
+    "correct_answer": [
+      "jest zdefiniowana wewnątrz obszaru równoległego jako zmienna statyczna (static) i nie jest objęta żadną dyrektywą",
+      "jest objęta klauzulą shared danego obszaru równoległego"
+    ]
+  },
+  {
+    "question": "Przykładami architektury SIMD są: (Wybierz wszystkie poprawne)",
+    "options": {
+      "a": "klasyczny procesor von Neumanna",
+      "b": "komputery masowo równoległe (superkomputery)",
+      "c": "procesory graficzne",
+      "d": "jednostki wektorowe w mikroprocesorach wielordzeniowych",
+      "e": "komputery wieloprocesorowe SMP"
+    },
+    "correct_answer": [
+      "procesory graficzne",
+      "jednostki wektorowe w mikroprocesorach wielordzeniowych"
+    ]
+  },
+  {
+    "question": "Prawo Amdahla głosi, że dla pojedynczego zadania o określonym rozmiarze, posiadającego część sekwencyjną, rozwiązywanego na maszynie o rosnącej liczbie procesorów/rdzeni: (Wybierz wszystkie poprawne)",
+    "options": {
+      "a": "przyspieszenie względne nie przekroczy pewnej stałej wartości",
+      "b": "przyspieszenie względne będzie rosnąć do nieskończoności wolniej niż liniowo",
+      "c": "czas rozwiązania nie może spaść poniżej pewnej stałej wartości większej od zera",
+      "d": "czas rozwiązania zacznie w pewnym momencie rosnąć",
+      "e": "przyspieszenie względne w ostateczności (asymptotycznie) spadnie do zera"
+    },
+    "correct_answer": [
+      "przyspieszenie względne nie przekroczy pewnej stałej wartości",
+      "czas rozwiązania nie może spaść poniżej pewnej stałej wartości większej od zera"
+    ]
+  },
+  {
+    "question": "Całkowity narzut obliczeń równoległych dla pewnego zadania o określonym rozmiarze (będący sumą narzutów na pojedyncze procesory/rdzenie): (Wybierz wszystkie poprawne)",
+    "options": {
+      "a": "w analizie Gustafsona jest stały przy rosnącej liczbie procesorów/rdzeni",
+      "b": "w analizie Amdahla jest stały przy rosnącej liczbie procesorów/rdzeni",
+      "c": "w analizie Amdahla rośnie szybciej niż liniowo przy rosnącej liczbie procesorów/rdzeni",
+      "d": "w analizie Amdahla rośnie liniowo przy rosnącej liczbie procesorów/rdzeni",
+      "e": "w analizie Gustafsona rośnie liniowo przy rosnącej liczbie procesorów/rdzeni"
+    },
+    "correct_answer": [
+      "w analizie Amdahla rośnie liniowo przy rosnącej liczbie procesorów/rdzeni",
+      "w analizie Gustafsona rośnie liniowo przy rosnącej liczbie procesorów/rdzeni"
+    ]
+  },
+  {
+    "question": "Współbieżne wykonanie procesów/wątków oznacza: (Wybierz wszystkie poprawne)",
+    "options": {
+      "a": "każde wykonanie równoległe (każde wykonanie równoległe jest wykonaniem współbieżnym)",
+      "b": "tylko wykonanie na maszynie wielordzeniowej",
+      "c": "wykonanie na maszynie jednordzeniowej w przeplocie",
+      "d": "wykonanie z nakładającymi się czasami wykonania (kolejne zaczynają pracę przed zakończeniem działania poprzednich)"
+    },
+    "correct_answer": [
+      "każde wykonanie równoległe (każde wykonanie równoległe jest wykonaniem współbieżnym)",
+      "wykonanie z nakładającymi się czasami wykonania (kolejne zaczynają pracę przed zakończeniem działania poprzednich)"
+    ]
+  },
+  {
+    "question": "Bezpieczeństwo wielowątkowe (thread safety) funkcji oznacza, że: (Wybierz wszystkie poprawne)",
+    "options": {
+      "a": "może być wykonywana przez wiele współbieżnych wątków bez wprowadzania błędów wykonania",
+      "b": "może być procedurą startową wątków",
+      "c": "dostępy do zasobów wspólnych są w niej realizowane w sposób bezpieczny",
+      "d": "może ona być wykonywana przez dowolnie dużą liczbę wątków",
+      "e": "wątek, który wykonuje funkcję jest bezpieczny"
+    },
+    "correct_answer": [
+      "może być wykonywana przez wiele współbieżnych wątków bez wprowadzania błędów wykonania",
+      "dostępy do zasobów wspólnych są w niej realizowane w sposób bezpieczny"
+    ]
+  },
+  {
+    "question": "Jakie elementy są standardowo (domyślnie) odrębne dla każdego z wątków systemowych pojedynczego procesu (a także wątki pthreads)? (Wybierz wszystkie poprawne)",
+    "options": {
+      "a": "zawartość rejestrów ogólnego przeznaczenia",
+      "b": "zmienne automatyczne wykonywanych przez wątki funkcji",
+      "c": "ciąg wykonywanych rozkazów (w praktyce rejestr licznika rozkazów)",
+      "d": "zmienne w obszarze statycznym procesu",
+      "e": "deskryptory plików",
+      "f": "stos"
+    },
+    "correct_answer": [
+      "zawartość rejestrów ogólnego przeznaczenia",
+      "zmienne automatyczne wykonywanych przez wątki funkcji",
+      "ciąg wykonywanych rozkazów (w praktyce rejestr licznika rozkazów)",
+      "stos"
+    ]
+  },
+  {
+    "question": "Funkcja `int pthread_mutex_trylock(pthread_mutex_t * mutex)`: (Wybierz wszystkie poprawne)",
+    "options": {
+      "a": "kiedy muteks jest zajęty zwraca numer błędu różny od zera",
+      "b": "zawsze wraca natychmiastowo (bez blokowania wątku)",
+      "c": "kiedy muteks jest wolny działa jak pthread_mutex_lock",
+      "d": "kiedy muteks jest wolny zwraca 1 (sukces)"
+    },
+    "correct_answer": [
+      "kiedy muteks jest zajęty zwraca numer błędu różny od zera",
+      "zawsze wraca natychmiastowo (bez blokowania wątku)",
+      "kiedy muteks jest wolny działa jak pthread_mutex_lock"
+    ]
+  }
+]

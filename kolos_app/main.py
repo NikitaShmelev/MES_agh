@@ -54,7 +54,9 @@ def clean_text(text: str) -> str:
 
 def initialize_quiz():
     """Inicjalizuje lub resetuje stan quizu w sesji."""
-    questions = load_data('data.json')
+    # questions = load_data('mes.json')
+    questions = load_data('pr.json')
+    
     st.session_state.questions = questions
     st.session_state.total_questions = len(questions)
     
