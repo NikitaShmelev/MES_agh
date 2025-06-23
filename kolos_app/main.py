@@ -3,6 +3,7 @@ import json
 import random
 import re
 import time
+from pathlib import Path
 
 # Konfiguracja strony
 st.set_page_config(
@@ -45,17 +46,25 @@ def load_data(file_path: str) -> list:
                 item['options'] = cleaned_options
         return data
     except (FileNotFoundError, json.JSONDecodeError) as e:
-        st.error(f"Błąd wczytywania pliku data.json: {e}")
+        st.error(f"Błąd wczytywania pliku {file_path}: {e}")
         return []
+
+def find_quizzes(data_dir="questions"):
+    """Skanuje folder 'data' i zwraca słownik z nazwami quizów i ścieżkami do plików."""
+    data_path = Path(data_dir)
+    if not data_path.is_dir():
+        return {}
+    quiz_files = list(data_path.glob("*.json"))
+    # Tworzy mapowanie: przyjazna nazwa -> pełna ścieżka
+    return {file.stem.replace("_", " ").capitalize(): file for file in quiz_files}
 
 def clean_text(text: str) -> str:
     """Usuwa niechciane znaki i białe znaki z tekstu."""
     return re.sub(r'[✓X]|\s+$', '', text).strip()
 
-def initialize_quiz():
-    """Inicjalizuje lub resetuje stan quizu w sesji."""
-    # questions = load_data('mes.json')
-    questions = load_data('pr.json')
+def initialize_quiz(quiz_file_path):
+    """Inicjalizuje lub resetuje stan quizu w sesji na podstawie wybranego pliku."""
+    questions = load_data(quiz_file_path)
     
     st.session_state.questions = questions
     st.session_state.total_questions = len(questions)
@@ -70,10 +79,10 @@ def initialize_quiz():
     st.session_state.answer_submitted = False
     st.session_state.quiz_started = True
     st.session_state.checkbox_states = {}
-    st.session_state.timer_stopped = False # Stan timera
+    st.session_state.timer_stopped = False
 
 def reset_quiz():
-    """Całkowicie resetuje quiz, usuwając stan sesji."""
+    """Całkowicie resetuje quiz, usuwając stan sesji, wracając do ekranu wyboru."""
     for key in list(st.session_state.keys()):
         del st.session_state[key]
     st.rerun()
@@ -83,24 +92,50 @@ def go_to_next_question():
     st.session_state.current_q_index_ptr += 1
     st.session_state.answer_submitted = False
     st.session_state.checkbox_states = {}
-    st.session_state.timer_stopped = False # Resetuj stan timera
+    st.session_state.timer_stopped = False
 
 
 # --- Główna logika aplikacji ---
 
-st.title("🚀 Quiz")
+st.title("🚀 Super Quiz")
 
 if 'quiz_started' not in st.session_state:
     st.session_state.quiz_started = False
 
-if st.sidebar.button("Zrestartuj test", type="primary"):
-    reset_quiz()
+if st.session_state.quiz_started:
+    if st.sidebar.button("Zmień quiz", type="secondary"):
+        reset_quiz()
+    if st.sidebar.button("Zrestartuj test", type="primary"):
+        # Zachowuje wybrany quiz, ale zaczyna od nowa
+        current_quiz_path = st.session_state.get('current_quiz_path')
+        reset_quiz()
+        st.session_state.selected_quiz_path = current_quiz_path
+        if current_quiz_path:
+            initialize_quiz(current_quiz_path)
+            st.rerun()
 
-# --- Ekran startowy ---
+# --- Ekran startowy i wybór quizu ---
 if not st.session_state.quiz_started:
-    if st.button("Rozpocznij Quiz!", type="primary", use_container_width=True):
-        initialize_quiz()
-        st.rerun()
+    st.header("Wybierz quiz do rozwiązania")
+    
+    quiz_map = find_quizzes()
+    
+    if not quiz_map:
+        st.error("Nie znaleziono żadnych plików .json w folderze 'questions'. Upewnij się, że folder istnieje i zawiera pliki z quizami.")
+    else:
+        # Przechowujemy mapowanie w stanie sesji, aby uniknąć problemów
+        st.session_state.quiz_map = quiz_map
+        
+        selected_quiz_name = st.selectbox(
+            "Dostępne quizy:",
+            options=list(quiz_map.keys())
+        )
+        
+        if st.button(f"Rozpocznij: {selected_quiz_name}", type="primary", use_container_width=True):
+            selected_path = quiz_map[selected_quiz_name]
+            st.session_state.current_quiz_path = selected_path # Zapisz ścieżkę do restartu
+            initialize_quiz(selected_path)
+            st.rerun()
 
 # --- Przebieg Quizu ---
 elif st.session_state.current_q_index_ptr < st.session_state.total_questions:
@@ -122,7 +157,6 @@ elif st.session_state.current_q_index_ptr < st.session_state.total_questions:
     if st.session_state.answer_submitted:
         last_result = st.session_state.quiz_history[-1]
         
-        # Formatowanie poprawnej odpowiedzi
         if isinstance(last_result['correct_answer'], list):
             correct_answer_display = "\n" + "\n".join([f"- {ans}" for ans in last_result['correct_answer']])
             correct_answer_heading = "**Poprawne odpowiedzi:**"
@@ -130,7 +164,6 @@ elif st.session_state.current_q_index_ptr < st.session_state.total_questions:
             correct_answer_display = f"**{last_result['correct_answer']}**"
             correct_answer_heading = "**Poprawna odpowiedź to:**"
         
-        # Wyświetlenie komunikatu zwrotnego
         if last_result['is_correct']:
             feedback_message = f"✅ Dobrze! {correct_answer_heading}{correct_answer_display}"
             st.success(feedback_message)
@@ -138,12 +171,11 @@ elif st.session_state.current_q_index_ptr < st.session_state.total_questions:
         else:
             user_answer_str = ", ".join(last_result['user_answer']) if isinstance(last_result['user_answer'], list) else last_result['user_answer']
             feedback_message = f"❌ Niestety, źle. Twoja odpowiedź: **{user_answer_str}**. {correct_answer_heading}{correct_answer_display}"
-            st.error(feedback_message) # Używamy st.error dla błędnej odpowiedzi dla lepszego rozróżnienia
+            st.error(feedback_message)
             countdown_duration = 5
         
         st.write("---")
 
-        # <<< POCZĄTEK ZMIANY: WARUNKOWY TIMER >>>
         if st.session_state.timer_stopped:
             st.info("Timer zatrzymany. Kliknij, aby kontynuować.")
             if st.button("Następne pytanie", use_container_width=True, type="primary"):
@@ -152,26 +184,23 @@ elif st.session_state.current_q_index_ptr < st.session_state.total_questions:
         else:
             placeholder = st.empty()
             
-            # Przyciski kontrolne
             col1, col2 = st.columns(2)
             with col1:
                 if st.button("Przejdź natychmiast", use_container_width=True):
                     go_to_next_question()
                     st.rerun()
-            if not last_result['is_correct']: # Przycisk zatrzymania tylko przy złej odpowiedzi
+            if not last_result['is_correct']:
                 with col2:
                     if st.button("Zatrzymaj timer", use_container_width=True):
                         st.session_state.timer_stopped = True
                         st.rerun()
 
-            # Pętla odliczająca
             for i in range(countdown_duration, 0, -1):
                 placeholder.markdown(f"### Automatyczne przejście za **{i}** s...")
                 time.sleep(1)
             
             go_to_next_question()
             st.rerun()
-        # <<< KONIEC ZMIANY >>>
 
     # Jeśli odpowiedź nie została udzielona, pokaż opcje
     else:
@@ -181,7 +210,7 @@ elif st.session_state.current_q_index_ptr < st.session_state.total_questions:
             st.markdown("Wybierz jedną lub więcej odpowiedzi i kliknij 'Sprawdź'.")
             user_answers = []
             for option_text in options.values():
-                if st.checkbox(option_text, key=option_text):
+                if st.checkbox(option_text, key=f"q{st.session_state.current_q_index_ptr}_{option_text}"):
                     user_answers.append(option_text)
             
             if st.button("Sprawdź odpowiedzi", use_container_width=True, type="primary"):
@@ -202,7 +231,7 @@ elif st.session_state.current_q_index_ptr < st.session_state.total_questions:
             cols = st.columns(2)
             col_idx = 0
             for option_text in options.values():
-                if cols[col_idx].button(option_text, key=option_text, use_container_width=True):
+                if cols[col_idx].button(option_text, key=f"q{st.session_state.current_q_index_ptr}_{option_text}", use_container_width=True):
                     is_correct = (option_text == correct_answer)
                     if is_correct:
                         st.session_state.score += 1
@@ -249,6 +278,10 @@ else:
                 st.success(f"**Poprawna odpowiedź:** {result['correct_answer']}")
 
     st.write("---")
-    if st.button("Zagraj jeszcze raz!", type="primary", use_container_width=True):
-        initialize_quiz()
-        st.rerun()
+    if st.button("Zagraj w ten quiz jeszcze raz!", type="primary", use_container_width=True):
+        current_quiz_path = st.session_state.get('current_quiz_path')
+        reset_quiz()
+        st.session_state.selected_quiz_path = current_quiz_path
+        if current_quiz_path:
+            initialize_quiz(current_quiz_path)
+            st.rerun()
