@@ -6,7 +6,7 @@ import time
 
 # Konfiguracja strony
 st.set_page_config(
-    page_title="Quiz MES",
+    page_title="Quiz",
     page_icon="🚀",
     layout="centered"
 )
@@ -88,7 +88,7 @@ def go_to_next_question():
 
 # --- Główna logika aplikacji ---
 
-st.title("🚀 Quiz z Metody Elementów Skończonych")
+st.title("🚀 Quiz")
 
 if 'quiz_started' not in st.session_state:
     st.session_state.quiz_started = False

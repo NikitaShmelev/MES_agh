@@ -399,5 +399,75 @@
       "e": "Jak w filmie Matrix"
     },
     "correct_answer": "Symetryczna"
+  },
+  {
+    "question": "Podano element skończony o następnych współrzędnych: ID 1(x=0, y=0), 2(x=4, y=0), 3(x=5, y=4), 4(x=0, y=2) oraz wartość ciśnienia w poszczególnych węzłach, P1=20, P2=30, P3=80, P4=10. Podano również współrzędną punktu całkowania ksi=-0,76 oraz eta=0,55. Oblicz współrzędne tego punktu całkowania w układzie x, y oraz wartość ciśnienia w tym punkcie:",
+    "options": {
+      "a": "x=0.873, y=1.736, P=22.03",
+      "b": "x=0.873, y=1.736, P=19.03",
+      "c": "x=0.573, y=1.736, P=22.03",
+      "d": "x=0.573, y=2.136, P=19.03",
+      "e": "x=0.573, y=1.736, P=19.03"
+    },
+    "correct_answer": "x=0.573, y=1.736, P=19.03"
+  },
+  {
+    "question": "Dla elementu czterowęzłowego w przestrzeni 2d wartość pochodnej funkcji kształtu N3 względem eta w punkcie całowania ksi=0,2 oraz eta=0,6 wynosi:",
+    "options": {
+      "a": "0,15",
+      "b": "0,2",
+      "c": "0,3",
+      "d": "0,45",
+      "e": "Żadna z powyższych"
+    },
+    "correct_answer": "0,3"
+  },
+  {
+    "question": "Do obliczenia pochodnej dx/dksi konieczne jest: (Wybierz wszystkie poprawne)",
+    "options": {
+      "a": "Obliczenie pochodnej funkcji kształtu N względem eta",
+      "b": "Obliczenie pochodnej funkcji kształtu N względem ksi",
+      "c": "Wykorzystanie współrzędnych punktu całkowania",
+      "d": "Zastosowanie interpolacji",
+      "e": "Wykorzystanie współrzędnych węzłów elementu skończonego"
+    },
+    "correct_answer": [
+      "Obliczenie pochodnej funkcji kształtu N względem ksi",
+      "Wykorzystanie współrzędnych węzłów elementu skończonego",
+      "Zastosowanie interpolacji",
+      "Wykorzystanie współrzędnych punktu całkowania"
+    ]
+  },
+  {
+    "question": "Macierz lokalna elementu 2d jest: (Wybierz wszystkie poprawne)",
+    "options": {
+      "a": "Ma zawsze wartości z zakresu 0-1",
+      "b": "Symetryczna",
+      "c": "Niesymetryczna",
+      "d": "Dla zagadnienia transferu ciepła składa się tylko z macierzy H wynikającej z równania Fouriera-Kirchhoffa"
+    },
+    "correct_answer": ["Symetryczna"]
+  },
+  {
+    "question": "W trójwymiarowych zagadnieniach teorii sprężystości przy wykorzystaniu simpleks elementów odkształcenie jest:",
+    "options": {
+      "a": "Stałe w całej objętości elementu",
+      "b": "Równe zeru",
+      "c": "Funkcją drugiego stopnia",
+      "d": "Równe 1.0",
+      "e": "Funkcją pierwszego stopnia"
+    },
+    "correct_answer": "Stałe w całej objętości elementu"
+  },
+  {
+    "question": "Jakie niewiadome podstawowe są w węzłach siatki MES podczas modelowania odkształcenia nieściśliwych materiałów w teorii płynów i teorii plastyczności?",
+    "options": {
+      "a": "Naprężenie uplastyczniające i przemieszczenia",
+      "b": "Granica plastyczności",
+      "c": "Prędkości płynięcia i średnie naprężenie",
+      "d": "Przemieszczenia",
+      "e": "Temperatura"
+    },
+    "correct_answer": "Prędkości płynięcia i średnie naprężenie"
   }
 ]
