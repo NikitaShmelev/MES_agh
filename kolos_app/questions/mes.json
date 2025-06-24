@@ -494,12 +494,12 @@
     "question": "Podano współrzędne elementu skończonego czterowęzłowego w przestrzeni 2D: x1=0, x2=2, x3=3, x4=0, y1=0, y2=0, y3=3, y4=4. Współrzędne punktu x oraz y punktu całkowania ksi=1/√(3), eta=1/√(3) wynoszą:",
     "options": {
       "a": "x=0.4673, y=0.8006",
-      "b": "x=1,7440, y=0.6786",
-      "c": "x=2,1993, y=2.532",
-      "d": "x=0,58932, y=2.9880",
+      "b": "x=1.7440, y=0.6786",
+      "c": "x=2.1993, y=2.532",
+      "d": "x=0.58932, y=2.9880",
       "e": "Zadne z powyższych"
     },
-    "correct_answer": "x=2,1993, y=2.532"
+    "correct_answer": "x=2.1993, y=2.532"
   },
   {
     "question": "Obliczenie pochodnej funkcji kształtu względem ksi w przestrzeni 1d: (Wybierz wszystkie poprawne)",
@@ -626,12 +626,12 @@
   {
     "question": "Podano element skończony o następujących współrzędnych x1=0, x2=5, x3=5, x4=0, y1=0, y2=0, y3=3, y4=3 oraz wartości funkcji kształtu w punkcie ksi oraz eta wynoszące odpowiednio N1=0,6, N2=0,1, N3=0,15. Oblicz współrzędną x, y odpowiadającą temu punktowi:",
     "options": {
-      "a": "x=1,25, y=0,9",
-      "b": "x=1.25, y=1,9",
-      "c": "x=1.75, y=1,9",
-      "d": "x=1,75, y=0,9"
+      "a": "x=1.25, y=0.9",
+      "b": "x=1.25, y=1.9",
+      "c": "x=1.75, y=1.9",
+      "d": "x=1.75, y=0.9"
     },
-    "correct_answer": "x=1.25, y=0,9"
+    "correct_answer": "x=1.25, y=0.9"
   },
   {
     "question": "Podano następujące dane: gęstość=20kg/m3, ciepło właściwe 10 J/(kgC), oraz jakobian przekształcenia wynoszący [[1.34, 0], [-0.32, 1]] obliczony dla punktu całkowania ksi=0.32, eta=0.66. Waga tego punktu wynosi 1.0. Oblicz wartość komponentu [2][2] macierzy [C].",
@@ -677,7 +677,7 @@
     "correct_answer": ["Identyfikatory węzłów elementów skończonych"]
   },
   {
-    "question": "Podczas całkowania macierzy H dwu punktowym schematem całkowania w punkcie ksi = -1/pierwiastek(3) oraz eta = -1/pierwiastek(3) otrzymano wyznacznik macierzy Jakobiego wynoszący 4 oraz macierz odwrotną jakobiego wynoszącą: [[0.5, 0.0], [0.0, 0.5]]. Jaka jest powierzchnia fragmentu elementu odpowiadającego temu punktowi całkowania?",
+    "question": "Podczas całkowania macierzy H dwu punktowym schematem całkowania w punkcie ksi = -1/√(3) oraz eta = -1/√(3) otrzymano wyznacznik macierzy Jakobiego wynoszący 4 oraz macierz odwrotną jakobiego wynoszącą: [[0.5, 0.0], [0.0, 0.5]]. Jaka jest powierzchnia fragmentu elementu odpowiadającego temu punktowi całkowania?",
     "options": {
       "a": "1",
       "b": "8",
@@ -735,13 +735,13 @@
   {
     "question": "Podano współrzędne elementu skończonego czterowęzłowego w przestrzeni 2D: x1=0, x2=2, x3=3, x4=0, y1=0, y2=0, y3=3, y4=4. Współrzędne punktu x oraz y odpowiadające punktowi całkowania ksi=1/√(3), eta=-1/√(3) wynoszą:",
     "options": {
-      "a": "x=0,4673, y=0,8006",
-      "b": "x=1,7440, y=0,6786",
-      "c": "x=2,1993, y=2,532",
-      "d": "x=0,58932, y=2,9880",
+      "a": "x=0.4673, y=0.8006",
+      "b": "x=1.7440, y=0.6786",
+      "c": "x=2.1993, y=2.532",
+      "d": "x=0.58932, y=2.9880",
       "e": "Zadne z powyższych"
     },
-    "correct_answer": "x=1,7440, y=0.6786"
+    "correct_answer": "x=1.7440, y=0.6786"
   },
   {
     "question": "Wartość detJ w 1d równa 5 oznacza to, że element skończony ma następujące wymiary: (Wybierz wszystkie poprawne)",
