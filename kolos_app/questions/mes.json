@@ -469,5 +469,313 @@
       "e": "Temperatura"
     },
     "correct_answer": "Prędkości płynięcia i średnie naprężenie"
+  },
+  {
+    "question": "Podczas całkowania w przestrzeni 2d dla 2 pkt schematu całkowania wartość funkcji kształtu w pkt całkowania mieści się w zakresie:",
+    "options": {
+      "a": "[-1; 0,32]",
+      "b": "[-0,57; 0]",
+      "c": "[0; 0,77]"
+    },
+    "correct_answer": "[0; 0,77]"
+  },
+  {
+    "question": "Dla elementu jednowymiarowego podano wartość temperatury w węźle x1=2,5 oraz x2=4,45 odpowiednio T1=45C, T2=122C. Oblicz wartość temperatury w punkcie 4,03 wynosi:",
+    "options": {
+      "a": "92,78",
+      "b": "Żadna z powyższych",
+      "c": "118,05",
+      "d": "69,087",
+      "e": "105,41"
+    },
+    "correct_answer": "105,41"
+  },
+  {
+    "question": "Podano współrzędne elementu skończonego czterowęzłowego w przestrzeni 2D: x1=0, x2=2, x3=3, x4=0, y1=0, y2=0, y3=3, y4=4. Współrzędne punktu x oraz y punktu całkowania ksi=1/pierwiastek(3), eta=1/pierwiastek(3) wynoszą:",
+    "options": {
+      "a": "x=0.4673, y=0.8006",
+      "b": "x=1,7440, y=0.6786",
+      "c": "x=2,1993, y=2.532",
+      "d": "x=0,58932, y=2.9880",
+      "e": "Zadne z powyższych"
+    },
+    "correct_answer": "x=2,1993, y=2.532"
+  },
+  {
+    "question": "Obliczenie pochodnej funkcji kształtu względem ksi w przestrzeni 1d: (Wybierz wszystkie poprawne)",
+    "options": {
+      "a": "Wymaga obliczenia Jakobianu przekształcenia",
+      "b": "Nie wymaga obliczenia Jakobianu przekształcenia",
+      "c": "Wymaga skorzystania z funkcji kształtu układu lokalnego",
+      "d": "Nie wymaga skorzystania z funkcji kształtu układu lokalnego"
+    },
+    "correct_answer": [
+      "Nie wymaga obliczenia Jakobianu przekształcenia",
+      "Nie wymaga skorzystania z funkcji kształtu układu lokalnego"
+    ]
+  },
+  {
+    "question": "Dla elementu jednowymiarowego podano wartość temperatury w węźle x1=2.5 oraz x2=4.45 odpowiednio T1=45MPa, T2=122MPa. Wartość temperatury w punkcie 2.4 wynosi:",
+    "options": {
+      "a": "41,05",
+      "b": "13,80",
+      "c": "131,87",
+      "d": "157,53",
+      "e": "Zadna z powyższych odpowiedzi"
+    },
+    "correct_answer": "Zadna z powyższych odpowiedzi"
+  },
+  {
+    "question": "Dla elementu jednowymiarowego podano wartość temperatury w węźle x1=2.5 oraz x2=4.45 odpowiednio T1=45C, T2=122C. Oblicz wartość temperatury w punkcie całkowania -0,771.",
+    "options": {
+      "a": "53,8165",
+      "b": "Nie da się obliczyć wartości temperatury",
+      "c": "73,0665",
+      "d": "97,7835",
+      "e": "120,8835"
+    },
+    "correct_answer": "53,8165"
+  },
+  {
+    "question": "Dla elementu jednowymiarowego podano wartość naprężenia w węźle x1=2.5 oraz x2=4.45 odpowiednio S1=45MPa, S2=122MPa. Oblicz wartość naprężenia w punkcie całkowania -0,77.",
+    "options": {
+      "a": "66,7 MPa",
+      "b": "53.8 MPa",
+      "c": "95,8 MPa",
+      "d": "102,9 MPa",
+      "e": "Nie da się obliczyć naprężenia w tym punkcie"
+    },
+    "correct_answer": "53.8 MPa"
+  },
+  {
+    "question": "Pochodna funkcji kształtu względem ksi obliczana jest:",
+    "options": {
+      "a": "W kazdym węźle elementy skończonego",
+      "b": "Tylko w jednym węźle, za który odpowiada ta funkcja kształtu",
+      "c": "Tylko w punkcie całkowania najbliższym tej funkcji kształtu",
+      "d": "W punkcie całkowania"
+    },
+    "correct_answer": "W punkcie całkowania"
+  },
+  {
+    "question": "Dla elementu jednowymiarowego podano wartość temperatury w węźle x1=2.5 oraz x2=4.45 odpowiednio T1=45C, T2=122C. Oblicz wartość temperatury w punkcie całkowania ksi=-1.271.",
+    "options": {
+      "a": "136,28",
+      "b": "34,56",
+      "c": "159,38",
+      "d": "15,31",
+      "e": "Nie da się obliczyć wartości temperatury"
+    },
+    "correct_answer": "Nie da się obliczyć wartości temperatury"
+  },
+  {
+    "question": "Dla elementu czterowęzłowego w przestrzeni 2d wartość pochodnej funkcji kształtu N3 względem eta w punkcie całowania ksi = 0,8 oraz eta = -0,6 wynosi:",
+    "options": {
+      "a": "0,15",
+      "b": "0,2",
+      "c": "0,3",
+      "d": "0,45",
+      "e": "Żadna z powyższych"
+    },
+    "correct_answer": "0,45"
+  },
+  {
+    "question": "Ile węzłów zawiera dwuwymiarowy kwadratowy element drugiego rzędu typu Lagrange'a?",
+    "options": {
+      "a": "6",
+      "b": "4",
+      "c": "3",
+      "d": "9",
+      "e": "8"
+    },
+    "correct_answer": "9"
+  },
+  {
+    "question": "W jakich jednostkach jest mierzony współczynnik wymiany ciepła (heat transfer coefficient)?",
+    "options": {
+      "a": "J/M²K",
+      "b": "W/M²",
+      "c": "W/K",
+      "d": "W/M²K",
+      "e": "N/WK"
+    },
+    "correct_answer": "W/M²K"
+  },
+  {
+    "question": "W jakich jednostkach jest mierzone mechaniczne naprężenie?",
+    "options": {
+      "a": "N/M²",
+      "b": "kg",
+      "c": "N",
+      "d": "NM",
+      "e": "[-] (bezwymiarowe)"
+    },
+    "correct_answer": "N/M²"
+  },
+  {
+    "question": "W jakich jednostkach jest mierzony współczynnik rozszerzalności termicznej?",
+    "options": {
+      "a": "1/°C",
+      "b": "M/°C",
+      "c": "N°C",
+      "d": "N/M2",
+      "e": "[-] (bezwymiarowy)"
+    },
+    "correct_answer": "1/°C"
+  },
+  {
+    "question": "Podano element skończony o następujących współrzędnych x1=0, x2=5, x3=5, x4=0, y1=0, y2=0, y3=3, y4=3 oraz wartości funkcji kształtu w punkcie ksi oraz eta wynoszące odpowiednio N1=0,6, N2=0,1, N3=0,15. Oblicz współrzędną x, y odpowiadającą temu punktowi:",
+    "options": {
+      "a": "x=1,25, y=0,9",
+      "b": "x=1.25, y=1,9",
+      "c": "x=1.75, y=1,9",
+      "d": "x=1,75, y=0,9"
+    },
+    "correct_answer": "x=1.25, y=0,9"
+  },
+  {
+    "question": "Podano następujące dane: gęstość=20kg/m3, ciepło właściwe 10 J/(kgC), oraz jakobian przekształcenia wynoszący [[1.34, 0], [-0.32, 1]] obliczony dla punktu całkowania ksi=0.32, eta=0.66. Waga tego punktu wynosi 1.0. Oblicz wartość komponentu [2][2] macierzy [C].",
+    "options": {
+      "a": "3,45",
+      "b": "22,25",
+      "c": "8,48",
+      "d": "80,42",
+      "e": "16,84"
+    },
+    "correct_answer": "80,42"
+  },
+  {
+    "question": "Dla elementu jednowymiarowego podano wartość naprężenia w węźle x1=2,5 oraz x2=4.45 odpowiednio S1=45MPa, S2=122MPa. Oblicz wartość naprężenia w punkcie całkowania 0,771.",
+    "options": {
+      "a": "85,8MPa",
+      "b": "113,2 MPa",
+      "c": "71,5 MPa",
+      "d": "Nie da się obliczyć naprężenia w tym punkcie",
+      "e": "109,1 MPa"
+    },
+    "correct_answer": "113,2 MPa"
+  },
+  {
+    "question": "Dla elementu jednowymiarowego podano wartość temperatury w węźle x1=2,5 oraz x2=4,45 odpowiednio T1=45C, T2=122C. Oblicz wartość temperatury w punkcie 3,71.",
+    "options": {
+      "a": "92,78",
+      "b": "69,087",
+      "c": "105,41",
+      "d": "Żadna z powyższych",
+      "e": "118,05"
+    },
+    "correct_answer": "92,78"
+  },
+  {
+    "question": "Do agregacji danych w MES 2d wykorzystywane są: (Wybierz wszystkie poprawne)",
+    "options": {
+      "a": "Pochodne funkcji kształtu względem ksi oraz eta",
+      "b": "Współrzędne węzłów elementu skończonego",
+      "c": "Wartości funkcji kształtu w punktach całkowania",
+      "d": "Identyfikatory węzłów elementów skończonych"
+    },
+    "correct_answer": ["Identyfikatory węzłów elementów skończonych"]
+  },
+  {
+    "question": "Podczas całkowania macierzy H dwu punktowym schematem całkowania w punkcie ksi = -1/pierwiastek(3) oraz eta = -1/pierwiastek(3) otrzymano wyznacznik macierzy Jakobiego wynoszący 4 oraz macierz odwrotną jakobiego wynoszącą: [[0.5, 0.0], [0.0, 0.5]]. Jaka jest powierzchnia fragmentu elementu odpowiadającego temu punktowi całkowania?",
+    "options": {
+      "a": "1",
+      "b": "8",
+      "c": "4",
+      "d": "2",
+      "e": "0.4"
+    },
+    "correct_answer": "4"
+  },
+  {
+    "question": "Podczas całkowania elementu skończonego czterowęzłowego schematem 3 punktowym po objętości oraz powierzchni, przy warunku brzegowym na dolną oraz prawą powierzchnię, ile jakobianów zostanie obliczonych?",
+    "options": {
+      "a": "15",
+      "b": "11",
+      "c": "6",
+      "d": "9"
+    },
+    "correct_answer": "11"
+  },
+  {
+    "question": "Podano element skończony o następujących współrzędnych x1=0, x2=5, x3=5, x4=0, y1=0, y2=0, y3=3, y4=3 oraz wartości funkcji kształtu w punkcie: N1=0,4, N2=0,2, N3=0,15. Oblicz współrzędną x, y odpowiadającą temu punktowi:",
+    "options": {
+      "a": "x=1,15, y=1,2",
+      "b": "x=1,75, y=1,62",
+      "c": "x=1.15, y=1,62",
+      "d": "x=1.75, y=1,2"
+    },
+    "correct_answer": "x=1.75, y=1,2"
+  },
+  {
+    "question": "Warunek brzegowy konwekcji jest wprowadzany do rozwiązania poprzez: (Wybierz wszystkie poprawne)",
+    "options": {
+      "a": "Hbc",
+      "b": "Wektor P",
+      "c": "Agregację",
+      "d": "punkty całkowania w objętości elementu",
+      "e": "Macierz C"
+    },
+    "correct_answer": [
+      "Hbc",
+      "Wektor P"
+    ]
+  },
+  {
+    "question": "Dla elementu jednowymiarowego podano wartość temperatury w węźle x1=2,5 oraz x2=4,45 odpowiednio T1=45C, T2=122C. Oblicz wartość temperatury w punkcie 4,35.",
+    "options": {
+      "a": "92,78",
+      "b": "118,05",
+      "c": "69,087",
+      "d": "Żadna z powyższych",
+      "e": "105,41"
+    },
+    "correct_answer": "118,05"
+  },
+  {
+    "question": "Podano współrzędne elementu skończonego czterowęzłowego w przestrzeni 2D: x1=0, x2=2, x3=3, x4=0, y1=0, y2=0, y3=3, y4=4. Współrzędne punktu x oraz y odpowiadające punktowi całkowania ksi=1/pierwiastek(3), eta=-1/pierwiastek(3) wynoszą:",
+    "options": {
+      "a": "x=0,4673, y=0,8006",
+      "b": "x=1,7440, y=0,6786",
+      "c": "x=2,1993, y=2,532",
+      "d": "x=0,58932, y=2,9880",
+      "e": "Zadne z powyższych"
+    },
+    "correct_answer": "x=1,7440, y=0.6786"
+  },
+  {
+    "question": "Wartość detJ w 1d równa 5 oznacza to, że element skończony ma następujące wymiary: (Wybierz wszystkie poprawne)",
+    "options": {
+      "a": "x1=-5, x2=5",
+      "b": "x1=5, x2=15",
+      "c": "x1=-5, x2=10",
+      "d": "x1=5, x2=10",
+      "e": "x1=0, x2=20"
+    },
+    "correct_answer": [
+      "x1=-5, x2=5",
+      "x1=5, x2=15"
+    ]
+  },
+  {
+    "question": "Obliczono macierz Jakobiego dla elementu czworokątnego w przestrzeni 2d. Mając wartość dx/dksi = 4 można stwierdzić że:",
+    "options": {
+      "a": "Element skończony jest kwadratem o boku długości 4",
+      "b": "Element skończony jest prostokątem o długości jednego boku równym 8",
+      "c": "Element skończony jest kwadratem o boku długości 8",
+      "d": "Element skończony jest prostokątem o długości jednego boku równym 4",
+      "e": "Nie da się nic powiedzieć o kształcie elementu skończonego"
+    },
+    "correct_answer": "Nie da się nic powiedzieć o kształcie elementu skończonego"
+  },
+  {
+    "question": "Podano funkcję $x^2+3x+3$. Wartość całki z tej funkcji w przedziale [-1, 4] stosując schemat całkowania (ksi1=-0,4, w1=0,9; ksi2=0,6, w2=1,1) wynosi:",
+    "options": {
+      "a": "68.4375 przy tym wartość w funkcji podcałkowej w pierwszym punkcie całkowania wynosi 4.75.",
+      "b": "62.4375 przy tym wartość w funkcji podcałkowej w pierwszym punkcie całkowania wynosi 2.25.",
+      "c": "59,166666 przy tym wartość w funkcji podcałkowej w pierwszym punkcie całkowania wynosi 2.25.",
+      "d": "62.4375 przy tym wartość w funkcji podcałkowej w pierwszym punkcie całkowania wynosi 4.75."
+    },
+    "correct_answer": "68.4375 przy tym wartość w funkcji podcałkowej w pierwszym punkcie całkowania wynosi 4.75."
   }
 ]
