@@ -372,5 +372,345 @@
       "zawsze wraca natychmiastowo (bez blokowania wątku)",
       "kiedy muteks jest wolny działa jak pthread_mutex_lock"
     ]
+  },
+  {
+    "question": "Jakie elementy są standardowo (domyślnie) współdzielone przez wątki systemowe pojedynczego procesu (a także wątki pthreads)? (Wybierz wszystkie poprawne)",
+    "options": {
+      "a": "deskryptory plików",
+      "b": "stos",
+      "c": "przestrzeń adresowa",
+      "d": "obszar kodu w przestrzeni adresowej procesu",
+      "e": "zmienne w obszarze statycznym procesu"
+    },
+    "correct_answer": [
+      "deskryptory plików",
+      "przestrzeń adresowa",
+      "obszar kodu w przestrzeni adresowej procesu",
+      "zmienne w obszarze statycznym procesu"
+    ]
+  },
+  {
+    "question": "Poprawną implementacją wzajemnego wykluczenia przed wejściem do sekcji krytycznej z wykorzystaniem 'busy wait' jest: (Wybierz wszystkie poprawne)",
+    "options": {
+      "a": "while(pthread_mutex_lock(&muteks)) {;}",
+      "b": "while(pthread_mutex_trylock(&muteks)!=0) {;}",
+      "c": "if(pthread_mutex_trylock(&muteks)) {;}",
+      "d": "while(pthread_mutex_trylock(&muteks)==0) {;}"
+    },
+    "correct_answer": [
+      "while(pthread_mutex_trylock(&muteks)!=0) {;}"
+    ]
+  },
+  {
+    "question": "Do jakiej sytuacji może dojść podczas współbieżnego wykonania przez wiele wątków funkcji, która inkrementuje współdzieloną zmienną (*(int*)arg)++ wewnątrz sekcji krytycznej chronionej muteksem?",
+    "options": {
+      "a": "Zakleszczenie (Deadlock)",
+      "b": "Zagłodzenie (Starvation)",
+      "c": "Wyścig (Race Condition)",
+      "d": "Zawsze wykona się poprawnie"
+    },
+    "correct_answer": "Zawsze wykona się poprawnie"
+  },
+  {
+    "question": "Do jakiej sytuacji może dojść podczas współbieżnego wykonania przez wiele wątków funkcji, która blokuje muteks, inkrementuje współdzieloną zmienną, a następnie zwalnia ten sam muteks?",
+    "options": {
+      "a": "Zakleszczenie (Deadlock)",
+      "b": "Zagłodzenie (Starvation)",
+      "c": "Wyścig (Race Condition)",
+      "d": "Zawsze wykona się poprawnie"
+    },
+    "correct_answer": "Zawsze wykona się poprawnie"
+  },
+  {
+    "question": "W klasycznym schemacie wykorzystania stosu, w momencie wywołania procedury procesor: (Wybierz wszystkie poprawne)",
+    "options": {
+      "a": "czyści stos",
+      "b": "przesuwa granice stosu (powiększa stos)",
+      "c": "kopiuje na stos kod wykonywanej procedury",
+      "d": "zapisuje dane na stos (m.in argumenty wywołanej procedury)",
+      "e": "przenosi sterowanie w miejsce przechowywania kodu procedury"
+    },
+    "correct_answer": [
+      "przesuwa granice stosu (powiększa stos)",
+      "zapisuje dane na stos (m.in argumenty wywołanej procedury)",
+      "przenosi sterowanie w miejsce przechowywania kodu procedury"
+    ]
+  },
+  {
+    "question": "Klauzula 'nowait' w OpenMP powoduje, że po zakończeniu realizacji dyrektywy wątki:",
+    "options": {
+      "a": "mogą od razu przystąpić do realizacji następnej dyrektywy",
+      "b": "nie czekają nawzajem na siebie na barierze na końcu pętli/sekcji",
+      "c": "natychmiast kasują swoje zmienne prywatne",
+      "d": "tworzą zmienne prywatne bez oczekiwania"
+    },
+    "correct_answer": "nie czekają nawzajem na siebie na barierze na końcu pętli/sekcji"
+  },
+  {
+    "question": "W analizie Gustafsona rozważa się zadania, w których czas rozwiązania programem równoległym przy rosnącej liczbie procesorów jest stały, albowiem zakłada się, że: (Wybierz wszystkie poprawne)",
+    "options": {
+      "a": "rozmiar zadania rośnie wraz z liczbą procesorów",
+      "b": "udział procentowy części sekwencyjnej w czasie rozwiązania na jednym procesorze maleje wraz ze wzrostem rozmiaru zadania",
+      "c": "część równoległa osiąga przyspieszenie ponadliniowe",
+      "d": "czas komunikacji rośnie wolniej niż czas obliczeń"
+    },
+    "correct_answer": [
+      "rozmiar zadania rośnie wraz z liczbą procesorów",
+      "udział procentowy części sekwencyjnej w czasie rozwiązania na jednym procesorze maleje wraz ze wzrostem rozmiaru zadania"
+    ]
+  },
+  {
+    "question": "Model programowania SPMD dla wątków pthreads można uzyskać poprzez przesłanie do każdego wątku jako argumentu:",
+    "options": {
+      "a": "nadanego identyfikatora wątku",
+      "b": "systemowego identyfikatora wątku",
+      "c": "wskaźnika do zmiennej przechowującej identyfikator wątku",
+      "d": "wskaźnika do indywidualnej struktury"
+    },
+    "correct_answer": "wskaźnika do zmiennej przechowującej identyfikator wątku"
+  },
+  {
+    "question": "Wskaż prawidłową kolejność etapów przetwarzania potokowego rozkazów:",
+    "options": {
+      "a": "IE-ID-OF-IF-WB (Execute-Decode-FetchOperands-FetchInstruction-WriteBack)",
+      "b": "ID-IF-WB-IE-OF",
+      "c": "IF-ID-OF-IE-WB",
+      "d": "WB-IE-IF-ID-OF"
+    },
+    "correct_answer": "IF-ID-OF-IE-WB"
+  },
+  {
+    "question": "Na stosie w trakcie realizacji programu przechowywane są: (Wybierz wszystkie poprawne)",
+    "options": {
+      "a": "dane programu",
+      "b": "dane wspólne procedur",
+      "c": "dane wejściowe (argumenty) procedur",
+      "d": "dane prywatne (lokalne) procedur",
+      "e": "dane do komunikacji z systemem operacyjnym"
+    },
+    "correct_answer": [
+      "dane wejściowe (argumenty) procedur",
+      "dane prywatne (lokalne) procedur"
+    ]
+  },
+  {
+    "question": "Szerokość połowienia danego układu (topologii) procesorów oznacza:",
+    "options": {
+      "a": "minimalną liczbę procesorów na przekroju połowiczym układu",
+      "b": "maksymalną liczbę krawędzi łączących połowę liczby procesorów",
+      "c": "minimalną liczbę krawędzi, których usunięcie dzieli układ na pół"
+    },
+    "correct_answer": "minimalną liczbę krawędzi, których usunięcie dzieli układ na pół"
+  },
+  {
+    "question": "Średnica topologii hiperkostki dla 'p' procesorów wynosi:",
+    "options": {
+      "a": "log p",
+      "b": "p/2",
+      "c": "p",
+      "d": "p * log p"
+    },
+    "correct_answer": "log p"
+  },
+  {
+    "question": "Liczba krawędzi topologii hiperkostki dla 'p' procesorów wynosi:",
+    "options": {
+      "a": "2*p",
+      "b": "(p * log p) / 2",
+      "c": "p * log p",
+      "d": "p/2 * log p"
+    },
+    "correct_answer": "(p * log p) / 2"
+  },
+  {
+    "question": "Średnica topologii torusa 2D dla 'p' procesorów wynosi:",
+    "options": {
+      "a": "sqrt(p)",
+      "b": "p/2",
+      "c": "p * sqrt(p)",
+      "d": "2 * sqrt(p)"
+    },
+    "correct_answer": "sqrt(p)"
+  },
+  {
+    "question": "Szerokość połowienia topologii torusa 2D dla 'p' procesorów wynosi:",
+    "options": {
+      "a": "p",
+      "b": "p/2 * sqrt(p)",
+      "c": "2 * sqrt(p)",
+      "d": "sqrt(p)"
+    },
+    "correct_answer": "2 * sqrt(p)"
+  },
+  {
+    "question": "Połączalność krawędziowa (arc connectivity) danego układu (topologii) procesorów oznacza:",
+    "options": {
+      "a": "maksymalną liczbę krawędzi łączących połowę liczby procesorów",
+      "b": "minimalną liczbę krawędzi, których usunięcie dzieli układ na pół",
+      "c": "minimalną liczbę krawędzi, których usunięcie dzieli układ na dwie sieci rozłączne"
+    },
+    "correct_answer": "minimalną liczbę krawędzi, których usunięcie dzieli układ na dwie sieci rozłączne"
+  },
+  {
+    "question": "Złożoność obliczeniowa algorytmu to:",
+    "options": {
+      "a": "stopień skomplikowania algorytmu",
+      "b": "ilość zasobów komputera wymaganych do realizacji algorytmu",
+      "c": "ilość zasobów komputera wymaganych do realizacji algorytmu dla najbardziej wymagających danych",
+      "d": "ilość zasobów komputera wymaganych do realizacji algorytmu jako funkcja rozmiaru danych wejściowych"
+    },
+    "correct_answer": "ilość zasobów komputera wymaganych do realizacji algorytmu jako funkcja rozmiaru danych wejściowych"
+  },
+  {
+    "question": "Złożoność pesymistyczna algorytmu oznacza złożoność dla:",
+    "options": {
+      "a": "największych dopuszczalnych danych",
+      "b": "najmniej korzystnych warunków realizacji zadania",
+      "c": "najmniej korzystnych przypadków danych wejściowych",
+      "d": "najmniej korzystnych architektur procesorów"
+    },
+    "correct_answer": "najmniej korzystnych przypadków danych wejściowych"
+  },
+  {
+    "question": "Algorytmy sortowania posiadają złożoność czasową:",
+    "options": {
+      "a": "liniową (problem 'łatwy')",
+      "b": "wielomianową (problem 'łatwy')",
+      "c": "wykładniczą (problem 'trudny')",
+      "d": "nie można określić, nie podając o jaką złożoność chodzi (optymistyczną, pesymistyczną czy oczekiwaną)"
+    },
+    "correct_answer": "wielomianową (problem 'łatwy')"
+  },
+  {
+    "question": "Złożoność czasowa algorytmu obliczania średniej ciągu liczb jest funkcją liczby liczb w ciągu:",
+    "options": {
+      "a": "liniową (problem 'łatwy')",
+      "b": "wielomianową (problem 'łatwy')",
+      "c": "wykładniczą (problem 'trudny')",
+      "d": "stałą"
+    },
+    "correct_answer": "liniową (problem 'łatwy')"
+  },
+  {
+    "question": "Środowisko RPC: (Wybierz wszystkie poprawne)",
+    "options": {
+      "a": "korzysta zawsze z protokołu TCP/IP",
+      "b": "może prowadzić system operacyjny do konfliktów przy ustalaniu numerów portów serwera",
+      "c": "stosuje transformację argumentów przesyłanych przez sieć do wspólnego formatu",
+      "d": "umożliwia zdalne wywołanie procedur z wieloma argumentami",
+      "e": "posługuje się mechanizmem wersji programów"
+    },
+    "correct_answer": [
+      "stosuje transformację argumentów przesyłanych przez sieć do wspólnego formatu",
+      "umożliwia zdalne wywołanie procedur z wieloma argumentami",
+      "posługuje się mechanizmem wersji programów"
+    ]
+  },
+  {
+    "question": "Model dostępu do pamięci wspólnej UMA (uniform memory access): (Wybierz wszystkie poprawne)",
+    "options": {
+      "a": "jest charakterystyczny dla systemów SMP (symmetric multiprocessing)",
+      "b": "jest charakterystyczny dla systemów DSM (distributed shared memory)",
+      "c": "oznacza, że zawartość każdej komórki pamięci jest dostępna dla każdego procesora",
+      "d": "oznacza, że zawartość każdej komórki jest dostępna dla każdego procesora w takim samym czasie"
+    },
+    "correct_answer": [
+      "jest charakterystyczny dla systemów SMP (symmetric multiprocessing)",
+      "oznacza, że zawartość każdej komórki pamięci jest dostępna dla każdego procesora",
+      "oznacza, że zawartość każdej komórki jest dostępna dla każdego procesora w takim samym czasie"
+    ]
+  },
+  {
+    "question": "Architektura komputerów równoległych, w której występuje wiele strumieni danych i jeden strumień rozkazów jest nazywana w klasyfikacji Flynna architekturą:",
+    "options": {
+      "a": "MISD",
+      "b": "SISD",
+      "c": "MIMD",
+      "d": "SIMD"
+    },
+    "correct_answer": "SIMD"
+  },
+  {
+    "question": "Procesory wielordzeniowe:",
+    "options": {
+      "a": "są nazywane inaczej układami scalonymi wieloprocesorowymi",
+      "b": "pracują w modelu SIMD",
+      "c": "nigdy nie przekroczą liczby rdzeni ok. kilkunastu",
+      "d": "nie posiadają pamięci podręcznej L2 i L3"
+    },
+    "correct_answer": "są nazywane inaczej układami scalonymi wieloprocesorowymi"
+  },
+  {
+    "question": "Współczesne procesory wielordzeniowe realizują model przetwarzania (na poziomie wielu rdzeni):",
+    "options": {
+      "a": "MISD",
+      "b": "MIMD",
+      "c": "SIMD",
+      "d": "SISD"
+    },
+    "correct_answer": "MIMD"
+  },
+  {
+    "question": "Klastry: (Wybierz wszystkie poprawne)",
+    "options": {
+      "a": "są specjalistycznymi superkomputerami",
+      "b": "powstają przez połączenie wielu komputerów siecią i wyposażenie ich w specjalne oprogramowanie",
+      "c": "zakładają najczęściej model programowania bez pamięci wspólnej",
+      "d": "skalują się dla liczb procesorów (rdzeni) do rzędu kilku tysięcy"
+    },
+    "correct_answer": [
+      "powstają przez połączenie wielu komputerów siecią i wyposażenie ich w specjalne oprogramowanie",
+      "zakładają najczęściej model programowania bez pamięci wspólnej",
+      "skalują się dla liczb procesorów (rdzeni) do rzędu kilku tysięcy"
+    ]
+  },
+  {
+    "question": "Klastry realizują model przetwarzania:",
+    "options": {
+      "a": "MISD",
+      "b": "MIMD",
+      "c": "SIMD",
+      "d": "SPMD"
+    },
+    "correct_answer": "MIMD"
+  },
+  {
+    "question": "Przetwarzanie w przepływie (pipelining) oznacza sytuację kiedy:",
+    "options": {
+      "a": "system operacyjny przydziela wątki tego samego zadania różnym rdzeniom",
+      "b": "pojedynczy procesor (rdzeń) na przemian wykonuje fragmenty wielu wątków",
+      "c": "pojedynczy procesor (rdzeń) może współbieżnie przetwarzać wiele rozkazów",
+      "d": "pojedynczy proces korzysta na przemian z wielu rdzeni"
+    },
+    "correct_answer": "pojedynczy procesor (rdzeń) może współbieżnie przetwarzać wiele rozkazów"
+  },
+  {
+    "question": "Błędne założenie (w stosunku do praktyki stosowania rzeczywistych programów równoległych) w ramach analizy Amdahla polega na rozważaniu:",
+    "options": {
+      "a": "zbyt dużej liczby procesorów",
+      "b": "zadań zbyt trudnych do zrównoleglenia",
+      "c": "zadań o stałym rozmiarze przy rosnącej liczbie procesorów"
+    },
+    "correct_answer": "zadań o stałym rozmiarze przy rosnącej liczbie procesorów"
+  },
+  {
+    "question": "Co oznacza `MPI_Allreduce(a, b, 1, MPI_INT, MPI_MAX, MPI_COMM_WORLD)` dla stanu początkowego P1:a={11}, P2:a={21}, P3:a={31}?",
+    "options": {
+      "a": "P1:b={31}, P2:b={31}, P3:b={31}",
+      "b": "P1:b={63}, P2:b={63}, P3:b={63}",
+      "c": "P1:b={11}, P2:b={21}, P3:b={31}",
+      "d": "Tylko w jednym procesie b={31}"
+    },
+    "correct_answer": "P1:b={31}, P2:b={31}, P3:b={31}"
+  },
+  {
+    "question": "W analizie Amdahla, graniczna wartość przyspieszenia dla programu, którego 25% czasu wykonania jest sekwencyjne (f=0.25), wynosi:",
+    "options": {
+      "a": "1.33",
+      "b": "4",
+      "c": "25",
+      "d": "Nieskończoność"
+    },
+    "correct_answer": "4"
   }
 ]
