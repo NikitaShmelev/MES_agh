@@ -106,7 +106,6 @@ if st.session_state.quiz_started:
     if st.sidebar.button("Zmień quiz", type="secondary"):
         reset_quiz()
     if st.sidebar.button("Zrestartuj test", type="primary"):
-        # Zachowuje wybrany quiz, ale zaczyna od nowa
         current_quiz_path = st.session_state.get('current_quiz_path')
         reset_quiz()
         st.session_state.selected_quiz_path = current_quiz_path
@@ -121,9 +120,8 @@ if not st.session_state.quiz_started:
     quiz_map = find_quizzes()
     
     if not quiz_map:
-        st.error("Nie znaleziono żadnych plików .json w folderze 'questions'. Upewnij się, że folder istnieje i zawiera pliki z quizami.")
+        st.error("Nie znaleziono żadnych plików .json w folderze 'data'. Upewnij się, że folder istnieje i zawiera pliki z quizami.")
     else:
-        # Przechowujemy mapowanie w stanie sesji, aby uniknąć problemów
         st.session_state.quiz_map = quiz_map
         
         selected_quiz_name = st.selectbox(
@@ -133,7 +131,7 @@ if not st.session_state.quiz_started:
         
         if st.button(f"Rozpocznij: {selected_quiz_name}", type="primary", use_container_width=True):
             selected_path = quiz_map[selected_quiz_name]
-            st.session_state.current_quiz_path = selected_path # Zapisz ścieżkę do restartu
+            st.session_state.current_quiz_path = selected_path
             initialize_quiz(selected_path)
             st.rerun()
 
@@ -206,10 +204,15 @@ elif st.session_state.current_q_index_ptr < st.session_state.total_questions:
     else:
         is_multi_select = "Wybierz wszystkie poprawne" in question_text
 
+        # <<< POCZĄTEK ZMIANY: LOSOWANIE ODPOWIEDZI >>>
+        shuffled_options = list(options.values())
+        random.shuffle(shuffled_options)
+        # <<< KONIEC ZMIANY >>>
+
         if is_multi_select:
             st.markdown("Wybierz jedną lub więcej odpowiedzi i kliknij 'Sprawdź'.")
             user_answers = []
-            for option_text in options.values():
+            for option_text in shuffled_options: # Używamy przetasowanej listy
                 if st.checkbox(option_text, key=f"q{st.session_state.current_q_index_ptr}_{option_text}"):
                     user_answers.append(option_text)
             
@@ -230,7 +233,7 @@ elif st.session_state.current_q_index_ptr < st.session_state.total_questions:
             st.markdown("Wybierz jedną odpowiedź:")
             cols = st.columns(2)
             col_idx = 0
-            for option_text in options.values():
+            for option_text in shuffled_options: # Używamy przetasowanej listy
                 if cols[col_idx].button(option_text, key=f"q{st.session_state.current_q_index_ptr}_{option_text}", use_container_width=True):
                     is_correct = (option_text == correct_answer)
                     if is_correct:
